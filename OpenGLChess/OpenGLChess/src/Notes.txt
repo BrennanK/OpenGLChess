@@ -1,0 +1,10 @@
+Modern Open Gl Notes:
+
+1) We use GLEW in order to gain access to moder OpenGL functions that re inside the drivers on our graphics card
+2) Rendering something on screen seems to be split into 3 parts vertex buffers, vertex attributes, and shaders
+3) When we reference data in opengl that data is loaded into a buffer, which is just a chunk of memory we specify 
+4) That buffer is given a certain ID number for reference
+
+Vertext Attribute notes: 
+1) In order to have our gpu actually know what to do with this data we need to use some methods to define and sort the structure of the data into 
+2) There may be times in which offsets have to be defined using void pointer casts such as (const void*) 8 to specify 8 bytes

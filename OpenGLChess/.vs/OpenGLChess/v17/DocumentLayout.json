@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "C:\\Portfolio folder\\OpenGLChess\\OpenGLChess\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{7F9CE7EB-E49B-4526-9033-F95953F0152D}|OpenGLChess\\OpenGLChess.vcxproj|C:\\Portfolio folder\\OpenGLChess\\OpenGLChess\\OpenGLChess\\src\\Notes.txt||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{7F9CE7EB-E49B-4526-9033-F95953F0152D}|OpenGLChess\\OpenGLChess.vcxproj|solutionrelative:OpenGLChess\\src\\Notes.txt||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{7F9CE7EB-E49B-4526-9033-F95953F0152D}|OpenGLChess\\OpenGLChess.vcxproj|C:\\Portfolio folder\\OpenGLChess\\OpenGLChess\\OpenGLChess\\src\\Application.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{7F9CE7EB-E49B-4526-9033-F95953F0152D}|OpenGLChess\\OpenGLChess.vcxproj|solutionrelative:OpenGLChess\\src\\Application.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
@@ -19,12 +23,25 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "Notes.txt",
+              "DocumentMoniker": "C:\\Portfolio folder\\OpenGLChess\\OpenGLChess\\OpenGLChess\\src\\Notes.txt",
+              "RelativeDocumentMoniker": "OpenGLChess\\src\\Notes.txt",
+              "ToolTip": "C:\\Portfolio folder\\OpenGLChess\\OpenGLChess\\OpenGLChess\\src\\Notes.txt",
+              "RelativeToolTip": "OpenGLChess\\src\\Notes.txt",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAB8AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
+              "WhenOpened": "2025-06-27T14:39:34.211Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "Application.cpp",
               "DocumentMoniker": "C:\\Portfolio folder\\OpenGLChess\\OpenGLChess\\OpenGLChess\\src\\Application.cpp",
               "RelativeDocumentMoniker": "OpenGLChess\\src\\Application.cpp",
               "ToolTip": "C:\\Portfolio folder\\OpenGLChess\\OpenGLChess\\OpenGLChess\\src\\Application.cpp",
               "RelativeToolTip": "OpenGLChess\\src\\Application.cpp",
-              "ViewState": "AgIAACQAAAAAAAAAAAAmwEEAAAAnAAAAAAAAAA==",
+              "ViewState": "AgIAABwAAAAAAAAAAAAiwDwAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-06-23T17:13:55.216Z",
               "EditorCaption": ""

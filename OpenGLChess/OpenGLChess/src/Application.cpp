@@ -38,6 +38,7 @@ int main(void)
 
 #pragma region ModernGL
 
+#pragma region Vertex_Buffer
     float positions[6] = {
         -0.5f,-0.5f,
         0.0f,0.5f,
@@ -47,6 +48,23 @@ int main(void)
     glGenBuffers(1, &buffer); // Creates the buffer and assigns the value to a varaible, this number is used to reference an object as an ID
     glBindBuffer(GL_ARRAY_BUFFER, buffer); // binds the buffer to a target in this case an array of memory
     glBufferData(GL_ARRAY_BUFFER, 6 * sizeof(float),positions,GL_STATIC_DRAW);
+
+#pragma region Vertex_Attributes
+    // You have to enable the array for Vertex sorting
+    glEnableVertexAttribArray(0);
+
+    // the last attribute had no offset since all data is evened out vertices if an offset is needed we use a cast like (const void*)8
+    glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, sizeof(float) * 2, 0); 
+#pragma endregion 
+
+#pragma region Shader
+
+#pragma endregion 
+
+    glBindBuffer(GL_ARRAY_BUFFER, 0);
+#pragma endregion
+
+
 #pragma endregion
     
     /* Loop until the user closes the window */
