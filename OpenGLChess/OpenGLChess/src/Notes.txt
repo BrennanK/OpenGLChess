@@ -8,3 +8,15 @@ Modern Open Gl Notes:
 Vertext Attribute notes: 
 1) In order to have our gpu actually know what to do with this data we need to use some methods to define and sort the structure of the data into 
 2) There may be times in which offsets have to be defined using void pointer casts such as (const void*) 8 to specify 8 bytes
+
+Shader notes:
+1) A shader is basically just a program that is run on our gpu where we write it, compile it and link it like any other program but run it on our gpu
+2) We want to be able to program the gpu in order to make use of its power
+3) 2 main types of shaders vertex shaders and fragment shaders, there are others but these are the most common used ones
+4) The general simplist order of steps is DrawCall->Vertex Shader-> Fragment Shader->Result On Screen
+5) Vertex shader is called per vertex to be renedered and it's main responsibility is to determine where/put the vertex on the screeen in screenspace
+6) The fragment shader is responsible for rasterizing the pixels in our objects. Thinkng back to the one triangle example it would draw the shape of the triangle by 
+	filling in the inside of the triangle with color which is called rasterizing
+7) The fragment shader will be called once per pixel needing to be colored
+8) Ideally this means more calculations want to be done in the vertex shader since it will be called less 
+9) Though there are specific things that should be done in the fragment shader such as lighting 
