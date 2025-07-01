@@ -7,6 +7,10 @@
       "RelativeMoniker": "D:0:0:{7F9CE7EB-E49B-4526-9033-F95953F0152D}|OpenGLChess\\OpenGLChess.vcxproj|solutionrelative:OpenGLChess\\src\\Application.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{7F9CE7EB-E49B-4526-9033-F95953F0152D}|OpenGLChess\\OpenGLChess.vcxproj|C:\\Portfolio folder\\OpenGLChess\\OpenGLChess\\OpenGLChess\\res\\shaders\\Basic.shader||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{7F9CE7EB-E49B-4526-9033-F95953F0152D}|OpenGLChess\\OpenGLChess.vcxproj|solutionrelative:OpenGLChess\\res\\shaders\\Basic.shader||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{7F9CE7EB-E49B-4526-9033-F95953F0152D}|OpenGLChess\\OpenGLChess.vcxproj|C:\\Portfolio folder\\OpenGLChess\\OpenGLChess\\OpenGLChess\\src\\Notes.txt||{8B382828-6202-11D1-8870-0000F87579D2}",
       "RelativeMoniker": "D:0:0:{7F9CE7EB-E49B-4526-9033-F95953F0152D}|OpenGLChess\\OpenGLChess.vcxproj|solutionrelative:OpenGLChess\\src\\Notes.txt||{8B382828-6202-11D1-8870-0000F87579D2}"
     }
@@ -18,11 +22,24 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "Basic.shader",
+              "DocumentMoniker": "C:\\Portfolio folder\\OpenGLChess\\OpenGLChess\\OpenGLChess\\res\\shaders\\Basic.shader",
+              "RelativeDocumentMoniker": "OpenGLChess\\res\\shaders\\Basic.shader",
+              "ToolTip": "C:\\Portfolio folder\\OpenGLChess\\OpenGLChess\\OpenGLChess\\res\\shaders\\Basic.shader",
+              "RelativeToolTip": "OpenGLChess\\res\\shaders\\Basic.shader",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2025-07-01T13:12:42.579Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "Notes.txt",
               "DocumentMoniker": "C:\\Portfolio folder\\OpenGLChess\\OpenGLChess\\OpenGLChess\\src\\Notes.txt",
               "RelativeDocumentMoniker": "OpenGLChess\\src\\Notes.txt",
@@ -40,7 +57,7 @@
               "RelativeDocumentMoniker": "OpenGLChess\\src\\Application.cpp",
               "ToolTip": "C:\\Portfolio folder\\OpenGLChess\\OpenGLChess\\OpenGLChess\\src\\Application.cpp",
               "RelativeToolTip": "OpenGLChess\\src\\Application.cpp",
-              "ViewState": "AgIAABMAAAAAAAAAAAAiwCcAAABAAAAAAAAAAA==",
+              "ViewState": "AgIAAGkAAAAAAAAAAAAiwIAAAAARAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-06-23T17:13:55.216Z",
               "EditorCaption": ""
