@@ -125,14 +125,22 @@ int main(void)
 #pragma region Vertex_Buffer
     
     float positions[] = {
-        -0.5f,-0.5f,
-        0.5f,-0.5f,
-        0.5f,0.5f,};
+        -0.5f,-0.5f, //0
+        0.5f,-0.5f,  //1
+        0.5f,0.5f,   //2
+        -0.5f,0.5f}; //3
+
+    unsigned int indices[] = // array of indices points such that we can draw multiple triangles without having to store duplicate positions
+    {
+        0,1,2,
+        2,3,0
+    };
 
     unsigned int buffer;
     glGenBuffers(1, &buffer); // Creates the buffer and assigns the value to a varaible, this number is used to reference an object as an ID
     glBindBuffer(GL_ARRAY_BUFFER, buffer); // binds the buffer to a target in this case an array of memory
-    glBufferData(GL_ARRAY_BUFFER, 6 * sizeof(float),positions,GL_STATIC_DRAW);
+    glBufferData(GL_ARRAY_BUFFER, 6 * 2 * sizeof(float),positions,GL_STATIC_DRAW);
+#pragma endregion Creates a section of data for our shape data and binds that data to a GPU buffer 
 
 #pragma region Vertex_Attributes
     // You have to enable the array for Vertex sorting
@@ -140,7 +148,15 @@ int main(void)
 
     // the last attribute had no offset since all data is evened out vertices if an offset is needed we use a cast like (const void*)8
     glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, sizeof(float) * 2, 0); 
-#pragma endregion 
+#pragma endregion Specifies a sorting structure for the data being passed in
+
+#pragma region Index_Buffer
+    unsigned int ibo;
+    glGenBuffers(1, &ibo); // Creates the buffer and assigns the value to a varaible, this number is used to reference an object as an ID
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ibo); // binds the buffer to a target in this case an array of memory
+    glBufferData(GL_ELEMENT_ARRAY_BUFFER, 6 * sizeof(unsigned int), indices, GL_STATIC_DRAW);
+#pragma endregion Used to indicate Triangles without duplicating vertices
+
 
 #pragma region Shader
 
@@ -151,10 +167,10 @@ int main(void)
     //std::cout <<source.FragmentSource<< std::endl;
     unsigned int shader = CreateShader(source.VertexSource,source.FragmentSource);
     glUseProgram(shader);
-#pragma endregion 
+#pragma endregion Responsible for Passing programs to the GPU for utilizing GPU resources
 
     glBindBuffer(GL_ARRAY_BUFFER, 0);
-#pragma endregion
+
 
 
 #pragma endregion
@@ -165,7 +181,8 @@ int main(void)
         /* Render here */
         glClear(GL_COLOR_BUFFER_BIT);
 
-        glDrawArrays(GL_TRIANGLES, 0, 3);// This alone has the potential to display a drawing if the driver has a default shader built in
+        glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, nullptr); // We use nullptr since the indices is bound to GL_ELEMENT_ARRAY_BUFFER
+        //glDrawArrays(GL_TRIANGLES, 0, 6);// This alone has the potential to display a drawing if the driver has a default shader built in
 
         /* Swap front and back buffers */
         glfwSwapBuffers(window);
