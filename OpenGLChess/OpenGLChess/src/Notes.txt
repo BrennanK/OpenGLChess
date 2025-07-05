@@ -20,3 +20,8 @@ Shader notes:
 7) The fragment shader will be called once per pixel needing to be colored
 8) Ideally this means more calculations want to be done in the vertex shader since it will be called less 
 9) Though there are specific things that should be done in the fragment shader such as lighting 
+
+Error Handling Notes:
+1) There are 2 general ways that this is commonly done either through gLGetError which returns the error code and has to be called multiple times per error 
+or we can use glDebugMessageCallback
+

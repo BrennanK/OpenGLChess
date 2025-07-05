@@ -9,6 +9,26 @@
 //https://docs.gl/
 #pragma endregion
 
+#define ASSERT(x) if(!(x)) __debugbreak(); // macros to make glGetError Easier
+#define GLCall(x) GLClearError();\
+x;\
+ASSERT(GLLogCall(#x, __FILE__,__LINE__))
+static void GLClearError() // method to invoke and get all GL error flags
+{
+    while (glGetError() != GL_NO_ERROR)
+    {
+
+    }
+}
+static bool GLLogCall(const char* function, const char* file, int line)
+{
+    while (GLenum error = glGetError())
+    {
+        std::cout << "[OpenGl error] (" << error << ")" << function <<"in " <<file << "on line " << line << std::endl;
+        return false;
+    }
+    return true;
+}
 struct ShaderProgramSource
 {
     std::string VertexSource;
@@ -102,7 +122,7 @@ int main(void)
 
 
     /* Create a windowed mode window and its OpenGL context */
-    window = glfwCreateWindow(640, 480, "Hello World", NULL, NULL);
+    window = glfwCreateWindow(640*2, 720, "Hello World", NULL, NULL);
     if (!window)
     {
         glfwTerminate();
@@ -181,7 +201,10 @@ int main(void)
         /* Render here */
         glClear(GL_COLOR_BUFFER_BIT);
 
-        glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, nullptr); // We use nullptr since the indices is bound to GL_ELEMENT_ARRAY_BUFFER
+        GLClearError();
+        GLCall(glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, nullptr)); // We use nullptr since the indices is bound to GL_ELEMENT_ARRAY_BUFFER
+        // above should be GL_UNSIGNED_INT
+        
         //glDrawArrays(GL_TRIANGLES, 0, 6);// This alone has the potential to display a drawing if the driver has a default shader built in
 
         /* Swap front and back buffers */
