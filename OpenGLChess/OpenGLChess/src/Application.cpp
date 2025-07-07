@@ -132,6 +132,8 @@ int main(void)
     /* Make the window's context current */
     glfwMakeContextCurrent(window);
 
+    glfwSwapInterval(4);
+
     if (glewInit())
     {
         std::cout << "Error" << std::endl;
@@ -187,11 +189,17 @@ int main(void)
     //std::cout <<source.FragmentSource<< std::endl;
     unsigned int shader = CreateShader(source.VertexSource,source.FragmentSource);
     glUseProgram(shader);
+
+    // Start of Uniforms section
+    GLCall(int location = glGetUniformLocation(shader, "u_Color"));
+    ASSERT(location != -1);
+    GLCall(glUniform4f(location, 0.8f, 0.3f, 0.8f, 1.0f));
 #pragma endregion Responsible for Passing programs to the GPU for utilizing GPU resources
 
     glBindBuffer(GL_ARRAY_BUFFER, 0);
 
-
+    float r = 0.0f;
+    float increment = 0.05f;
 
 #pragma endregion
     
@@ -201,6 +209,17 @@ int main(void)
         /* Render here */
         glClear(GL_COLOR_BUFFER_BIT);
 
+        GLCall(glUniform4f(location, r, 0.3f, 0.8f, 1.0f));
+
+        if (r > 1.0f)
+        {
+            increment = -0.05f;
+        }
+        else if (r<0.0f)
+        {
+            increment = 0.05f;
+        }
+        r += increment;
         GLClearError();
         GLCall(glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, nullptr)); // We use nullptr since the indices is bound to GL_ELEMENT_ARRAY_BUFFER
         // above should be GL_UNSIGNED_INT
