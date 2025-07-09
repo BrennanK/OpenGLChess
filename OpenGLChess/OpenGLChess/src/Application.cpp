@@ -118,8 +118,9 @@ int main(void)
     /* Initialize the library */
     if (!glfwInit())
         return -1;
-
-
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
+    glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
     /* Create a windowed mode window and its OpenGL context */
     window = glfwCreateWindow(640*2, 720, "Hello World", NULL, NULL);
@@ -158,18 +159,22 @@ int main(void)
         2,3,0
     };
 
+    unsigned int vao;
+    GLCall(glGenVertexArrays(1, &vao));
+    GLCall(glBindVertexArray(vao));
+
     unsigned int buffer;
     glGenBuffers(1, &buffer); // Creates the buffer and assigns the value to a varaible, this number is used to reference an object as an ID
     glBindBuffer(GL_ARRAY_BUFFER, buffer); // binds the buffer to a target in this case an array of memory
-    glBufferData(GL_ARRAY_BUFFER, 6 * 2 * sizeof(float),positions,GL_STATIC_DRAW);
+    glBufferData(GL_ARRAY_BUFFER, 4 * 2 * sizeof(float),positions,GL_STATIC_DRAW);
 #pragma endregion Creates a section of data for our shape data and binds that data to a GPU buffer 
 
 #pragma region Vertex_Attributes
     // You have to enable the array for Vertex sorting
-    glEnableVertexAttribArray(0);
+    GLCall(glEnableVertexAttribArray(0));
 
     // the last attribute had no offset since all data is evened out vertices if an offset is needed we use a cast like (const void*)8
-    glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, sizeof(float) * 2, 0); 
+    glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, sizeof(float) * 2, 0); // this line is what binds buffer to the vertex array object vao
 #pragma endregion Specifies a sorting structure for the data being passed in
 
 #pragma region Index_Buffer
@@ -195,9 +200,10 @@ int main(void)
     ASSERT(location != -1);
     GLCall(glUniform4f(location, 0.8f, 0.3f, 0.8f, 1.0f));
 #pragma endregion Responsible for Passing programs to the GPU for utilizing GPU resources
-
+    glBindVertexArray(0);
+    glUseProgram(0);
     glBindBuffer(GL_ARRAY_BUFFER, 0);
-
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
     float r = 0.0f;
     float increment = 0.05f;
 
@@ -208,6 +214,15 @@ int main(void)
     {
         /* Render here */
         glClear(GL_COLOR_BUFFER_BIT);
+
+        glUseProgram(shader);
+        //glBindBuffer(GL_ARRAY_BUFFER, buffer);
+        glBindVertexArray(vao);
+        glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ibo);
+
+
+        //glEnableVertexAttribArray(0);
+        //glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, sizeof(float) * 2, 0);
 
         GLCall(glUniform4f(location, r, 0.3f, 0.8f, 1.0f));
 

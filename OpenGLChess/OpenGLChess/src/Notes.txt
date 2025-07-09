@@ -25,3 +25,10 @@ Error Handling Notes:
 1) There are 2 general ways that this is commonly done either through gLGetError which returns the error code and has to be called multiple times per error 
 or we can use glDebugMessageCallback
 
+Vertex Array Notes
+1) A Vertex Array is similar to a vertex buffer but with some minor differences
+2) The first difference is that with a vertex Array we do not have to bind a vertex attribute pointer every time we draw
+3) The second difference is that a Vertex Array allows us to have multiple meshes on screen at the same time
+4) In order to make use of a Vertex array object we need to follow this order 
+	-A) Create the Vertex Array Object and Bind it 
+	-B) Create a number of buffers and for each buffer enable the attribute array and specify the vertex attribute as an index in the array
