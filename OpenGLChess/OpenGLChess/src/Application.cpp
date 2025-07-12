@@ -4,31 +4,15 @@
 #include <fstream>
 #include <string>
 #include <sstream>
+#include "Renderer.h"
+#include "VertexBuffer.h"
+#include "IndexBuffer.h"
 #pragma region Docs
 // Really Good Documentation Website for OpenGL
 //https://docs.gl/
 #pragma endregion
 
-#define ASSERT(x) if(!(x)) __debugbreak(); // macros to make glGetError Easier
-#define GLCall(x) GLClearError();\
-x;\
-ASSERT(GLLogCall(#x, __FILE__,__LINE__))
-static void GLClearError() // method to invoke and get all GL error flags
-{
-    while (glGetError() != GL_NO_ERROR)
-    {
 
-    }
-}
-static bool GLLogCall(const char* function, const char* file, int line)
-{
-    while (GLenum error = glGetError())
-    {
-        std::cout << "[OpenGl error] (" << error << ")" << function <<"in " <<file << "on line " << line << std::endl;
-        return false;
-    }
-    return true;
-}
 struct ShaderProgramSource
 {
     std::string VertexSource;
@@ -146,110 +130,116 @@ int main(void)
 #pragma region ModernGL
 
 #pragma region Vertex_Buffer
-    
-    float positions[] = {
-        -0.5f,-0.5f, //0
-        0.5f,-0.5f,  //1
-        0.5f,0.5f,   //2
-        -0.5f,0.5f}; //3
-
-    unsigned int indices[] = // array of indices points such that we can draw multiple triangles without having to store duplicate positions
     {
-        0,1,2,
-        2,3,0
-    };
+        float positions[] = {
+            -0.5f,-0.5f, //0
+            0.5f,-0.5f,  //1
+            0.5f,0.5f,   //2
+            -0.5f,0.5f }; //3
 
-    unsigned int vao;
-    GLCall(glGenVertexArrays(1, &vao));
-    GLCall(glBindVertexArray(vao));
+        unsigned int indices[] = // array of indices points such that we can draw multiple triangles without having to store duplicate positions
+        {
+            0,1,2,
+            2,3,0
+        };
 
-    unsigned int buffer;
-    glGenBuffers(1, &buffer); // Creates the buffer and assigns the value to a varaible, this number is used to reference an object as an ID
-    glBindBuffer(GL_ARRAY_BUFFER, buffer); // binds the buffer to a target in this case an array of memory
-    glBufferData(GL_ARRAY_BUFFER, 4 * 2 * sizeof(float),positions,GL_STATIC_DRAW);
+        unsigned int vao;
+        GLCall(glGenVertexArrays(1, &vao));
+        GLCall(glBindVertexArray(vao));
+
+        // unsigned int buffer;
+         //glGenBuffers(1, &buffer); // Creates the buffer and assigns the value to a varaible, this number is used to reference an object as an ID
+         //glBindBuffer(GL_ARRAY_BUFFER, buffer); // binds the buffer to a target in this case an array of memory
+         //glBufferData(GL_ARRAY_BUFFER, 4 * 2 * sizeof(float),positions,GL_STATIC_DRAW);
+
+        VertexBuffer vb(positions, 4 * 2 * sizeof(float));
+
+
 #pragma endregion Creates a section of data for our shape data and binds that data to a GPU buffer 
 
 #pragma region Vertex_Attributes
-    // You have to enable the array for Vertex sorting
-    GLCall(glEnableVertexAttribArray(0));
+        // You have to enable the array for Vertex sorting
+        GLCall(glEnableVertexAttribArray(0));
 
-    // the last attribute had no offset since all data is evened out vertices if an offset is needed we use a cast like (const void*)8
-    glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, sizeof(float) * 2, 0); // this line is what binds buffer to the vertex array object vao
+        // the last attribute had no offset since all data is evened out vertices if an offset is needed we use a cast like (const void*)8
+        glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, sizeof(float) * 2, 0); // this line is what binds buffer to the vertex array object vao
 #pragma endregion Specifies a sorting structure for the data being passed in
 
 #pragma region Index_Buffer
-    unsigned int ibo;
-    glGenBuffers(1, &ibo); // Creates the buffer and assigns the value to a varaible, this number is used to reference an object as an ID
-    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ibo); // binds the buffer to a target in this case an array of memory
-    glBufferData(GL_ELEMENT_ARRAY_BUFFER, 6 * sizeof(unsigned int), indices, GL_STATIC_DRAW);
+        //unsigned int ibo;
+        //glGenBuffers(1, &ibo); // Creates the buffer and assigns the value to a varaible, this number is used to reference an object as an ID
+        //glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ibo); // binds the buffer to a target in this case an array of memory
+        //glBufferData(GL_ELEMENT_ARRAY_BUFFER, 6 * sizeof(unsigned int), indices, GL_STATIC_DRAW);
+
+        IndexBuffer ib(indices, 6);
 #pragma endregion Used to indicate Triangles without duplicating vertices
 
 
 #pragma region Shader
 
-    ShaderProgramSource source = ParseShader("res/shaders/Basic.shader");
-   // std::cout << "Vertex Source: " << std::endl;
-   // std::cout << source.VertexSource << std::endl;
-   // std::cout << "Fragment Source: " << std::endl;
-    //std::cout <<source.FragmentSource<< std::endl;
-    unsigned int shader = CreateShader(source.VertexSource,source.FragmentSource);
-    glUseProgram(shader);
+        ShaderProgramSource source = ParseShader("res/shaders/Basic.shader");
+        // std::cout << "Vertex Source: " << std::endl;
+        // std::cout << source.VertexSource << std::endl;
+        // std::cout << "Fragment Source: " << std::endl;
+         //std::cout <<source.FragmentSource<< std::endl;
+        unsigned int shader = CreateShader(source.VertexSource, source.FragmentSource);
+        glUseProgram(shader);
 
-    // Start of Uniforms section
-    GLCall(int location = glGetUniformLocation(shader, "u_Color"));
-    ASSERT(location != -1);
-    GLCall(glUniform4f(location, 0.8f, 0.3f, 0.8f, 1.0f));
+        // Start of Uniforms section
+        GLCall(int location = glGetUniformLocation(shader, "u_Color"));
+        ASSERT(location != -1);
+        GLCall(glUniform4f(location, 0.8f, 0.3f, 0.8f, 1.0f));
 #pragma endregion Responsible for Passing programs to the GPU for utilizing GPU resources
-    glBindVertexArray(0);
-    glUseProgram(0);
-    glBindBuffer(GL_ARRAY_BUFFER, 0);
-    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
-    float r = 0.0f;
-    float increment = 0.05f;
+        glBindVertexArray(0);
+        glUseProgram(0);
+        glBindBuffer(GL_ARRAY_BUFFER, 0);
+        glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
+        float r = 0.0f;
+        float increment = 0.05f;
 
 #pragma endregion
-    
-    /* Loop until the user closes the window */
-    while (!glfwWindowShouldClose(window))
-    {
-        /* Render here */
-        glClear(GL_COLOR_BUFFER_BIT);
 
-        glUseProgram(shader);
-        //glBindBuffer(GL_ARRAY_BUFFER, buffer);
-        glBindVertexArray(vao);
-        glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ibo);
-
-
-        //glEnableVertexAttribArray(0);
-        //glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, sizeof(float) * 2, 0);
-
-        GLCall(glUniform4f(location, r, 0.3f, 0.8f, 1.0f));
-
-        if (r > 1.0f)
+        /* Loop until the user closes the window */
+        while (!glfwWindowShouldClose(window))
         {
-            increment = -0.05f;
-        }
-        else if (r<0.0f)
-        {
-            increment = 0.05f;
-        }
-        r += increment;
-        GLClearError();
-        GLCall(glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, nullptr)); // We use nullptr since the indices is bound to GL_ELEMENT_ARRAY_BUFFER
-        // above should be GL_UNSIGNED_INT
-        
-        //glDrawArrays(GL_TRIANGLES, 0, 6);// This alone has the potential to display a drawing if the driver has a default shader built in
+            /* Render here */
+            glClear(GL_COLOR_BUFFER_BIT);
 
-        /* Swap front and back buffers */
-        glfwSwapBuffers(window);
+            glUseProgram(shader);
+            //glBindBuffer(GL_ARRAY_BUFFER, buffer);
+            glBindVertexArray(vao);
+            //glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ibo);
+            ib.Bind();
 
-        /* Poll for and process events */
-        glfwPollEvents();
+            //glEnableVertexAttribArray(0);
+            //glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, sizeof(float) * 2, 0);
+
+            GLCall(glUniform4f(location, r, 0.3f, 0.8f, 1.0f));
+
+            if (r > 1.0f)
+            {
+                increment = -0.05f;
+            }
+            else if (r < 0.0f)
+            {
+                increment = 0.05f;
+            }
+            r += increment;
+            GLClearError();
+            GLCall(glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, nullptr)); // We use nullptr since the indices is bound to GL_ELEMENT_ARRAY_BUFFER
+            // above should be GL_UNSIGNED_INT
+
+            //glDrawArrays(GL_TRIANGLES, 0, 6);// This alone has the potential to display a drawing if the driver has a default shader built in
+
+            /* Swap front and back buffers */
+            glfwSwapBuffers(window);
+
+            /* Poll for and process events */
+            glfwPollEvents();
+        }
+
+        glDeleteProgram(shader);
     }
-
-    glDeleteProgram(shader);
-
     glfwTerminate();
     return 0;
 }
