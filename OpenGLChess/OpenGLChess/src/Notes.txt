@@ -32,3 +32,4 @@ Vertex Array Notes
 4) In order to make use of a Vertex array object we need to follow this order 
 	-A) Create the Vertex Array Object and Bind it 
 	-B) Create a number of buffers and for each buffer enable the attribute array and specify the vertex attribute as an index in the array
+		- Done using glEnableVertexAttribArray and glVertexAttribPointer
