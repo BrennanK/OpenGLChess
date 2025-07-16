@@ -1,100 +1,14 @@
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
-#include <iostream>
-#include <fstream>
-#include <string>
-#include <sstream>
 #include "Renderer.h"
 #include "VertexBuffer.h"
 #include "IndexBuffer.h"
 #include "VertexArray.h"
+#include "Shader.h"
 #pragma region Docs
 // Really Good Documentation Website for OpenGL
 //https://docs.gl/
 #pragma endregion
-
-
-struct ShaderProgramSource
-{
-    std::string VertexSource;
-    std::string FragmentSource;
-};
-
-static ShaderProgramSource ParseShader(const std::string& filePath)
-{
-    std::ifstream stream(filePath);
-
-    enum class Shadertype
-    {
-        NONE = -1, VERTEX=0, FRAGMENT=1
-    };
-
-    std::string line;
-    std::stringstream ss[2];
-    Shadertype type = Shadertype::NONE;
-    while (getline(stream,line))
-    {
-        if (line.find("#shader") != std::string::npos)
-        {
-            if (line.find("vertex") != std::string::npos)
-            {
-                type = Shadertype::VERTEX;
-            }
-            else if (line.find("fragment") != std::string::npos)
-            {
-                type = Shadertype::FRAGMENT;
-            }
-        }
-        else
-        {
-            ss[(int)type] << line << "\n";
-        }
-    }
-    return {ss[0].str(),ss[1].str()};
-}
-
-static unsigned int CompileShader(unsigned int type, const std::string& source)
-{
-    unsigned int id = glCreateShader(type);
-    const char* src = source.c_str();
-    glShaderSource(id, 1, &src, nullptr);
-    glCompileShader(id);
-
-    //TODO: Error Handling
-    int result;
-    glGetShaderiv(id, GL_COMPILE_STATUS, &result);
-    if (result == GL_FALSE)
-    {
-        int length;
-        glGetShaderiv(id, GL_INFO_LOG_LENGTH, &length);
-        char* message = (char*)alloca(length * sizeof(char));
-        glGetShaderInfoLog(id,length,&length,message);
-        std::cout << "Failed to compile"<<(type==GL_VERTEX_SHADER ? "Vertex":"Fragement") << "shader: ";
-        std::cout << message<<std::endl;
-
-        glDeleteShader(id);
-        return 0;
-    }
-
-    return id;
-}
-
-static unsigned int CreateShader(const std::string& vertexShader, const std::string& fragmentShader)
-{
-    unsigned int program = glCreateProgram();
-    unsigned int vs = CompileShader(GL_VERTEX_SHADER,vertexShader);
-    unsigned int fs = CompileShader(GL_FRAGMENT_SHADER, fragmentShader);
-
-    glAttachShader(program, vs);
-    glAttachShader(program, fs);
-    glLinkProgram(program);
-    glValidateProgram(program);
-
-    glDeleteShader(vs);
-    glDeleteShader(fs);
-
-    return program;
-}
 
 int main(void)
 {
@@ -148,11 +62,6 @@ int main(void)
         GLCall(glGenVertexArrays(1, &vao));
         GLCall(glBindVertexArray(vao));
 
-        // unsigned int buffer;
-         //glGenBuffers(1, &buffer); // Creates the buffer and assigns the value to a varaible, this number is used to reference an object as an ID
-         //glBindBuffer(GL_ARRAY_BUFFER, buffer); // binds the buffer to a target in this case an array of memory
-         //glBufferData(GL_ARRAY_BUFFER, 4 * 2 * sizeof(float),positions,GL_STATIC_DRAW);
-
         VertexArray va;
         VertexBuffer vb(positions, 4 * 2 * sizeof(float));
         VertexBufferLayout layout;
@@ -171,10 +80,6 @@ int main(void)
 #pragma endregion Specifies a sorting structure for the data being passed in
 
 #pragma region Index_Buffer
-        //unsigned int ibo;
-        //glGenBuffers(1, &ibo); // Creates the buffer and assigns the value to a varaible, this number is used to reference an object as an ID
-        //glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ibo); // binds the buffer to a target in this case an array of memory
-        //glBufferData(GL_ELEMENT_ARRAY_BUFFER, 6 * sizeof(unsigned int), indices, GL_STATIC_DRAW);
 
         IndexBuffer ib(indices, 6);
 #pragma endregion Used to indicate Triangles without duplicating vertices
@@ -182,23 +87,17 @@ int main(void)
 
 #pragma region Shader
 
-        ShaderProgramSource source = ParseShader("res/shaders/Basic.shader");
-        // std::cout << "Vertex Source: " << std::endl;
-        // std::cout << source.VertexSource << std::endl;
-        // std::cout << "Fragment Source: " << std::endl;
-         //std::cout <<source.FragmentSource<< std::endl;
-        unsigned int shader = CreateShader(source.VertexSource, source.FragmentSource);
-        glUseProgram(shader);
-
-        // Start of Uniforms section
-        GLCall(int location = glGetUniformLocation(shader, "u_Color"));
-        ASSERT(location != -1);
-        GLCall(glUniform4f(location, 0.8f, 0.3f, 0.8f, 1.0f));
+        Shader so("res/shaders/Basic.shader");
+        so.Bind();// We must bind before setting the uniform
+        so.SetUniform4f("u_Color",0.8f, 0.3f, 0.8f, 1.0f);
+       
 #pragma endregion Responsible for Passing programs to the GPU for utilizing GPU resources
+      
+        
         va.Unbind();
-        glUseProgram(0);
-        glBindBuffer(GL_ARRAY_BUFFER, 0);
-        glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
+        vb.Unbind();
+        ib.Unbind();
+        so.Unbind();
         float r = 0.0f;
         float increment = 0.05f;
 
@@ -210,17 +109,11 @@ int main(void)
             /* Render here */
             glClear(GL_COLOR_BUFFER_BIT);
 
-            glUseProgram(shader);
-            //glBindBuffer(GL_ARRAY_BUFFER, buffer);
-            //glBindVertexArray(vao);
-            //glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ibo);
+            so.Bind();
             va.Bind();
             ib.Bind();
-            
-            //glEnableVertexAttribArray(0);
-            //glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, sizeof(float) * 2, 0);
 
-            GLCall(glUniform4f(location, r, 0.3f, 0.8f, 1.0f));
+            GLCall(so.SetUniform4f("u_Color", r, 0.3f, 0.8f, 1.0f));
 
             if (r > 1.0f)
             {
@@ -244,7 +137,7 @@ int main(void)
             glfwPollEvents();
         }
 
-        glDeleteProgram(shader);
+        //glDeleteProgram(shader);
     }
     glfwTerminate();
     return 0;
