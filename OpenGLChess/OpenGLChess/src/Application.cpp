@@ -4,6 +4,7 @@
 #include "VertexBuffer.h"
 #include "IndexBuffer.h"
 #include "VertexArray.h"
+#include "VertexBufferLayout.h"
 #include "Shader.h"
 #pragma region Docs
 // Really Good Documentation Website for OpenGL
@@ -98,6 +99,9 @@ int main(void)
         vb.Unbind();
         ib.Unbind();
         so.Unbind();
+
+        Renderer renderer;
+
         float r = 0.0f;
         float increment = 0.05f;
 
@@ -107,11 +111,13 @@ int main(void)
         while (!glfwWindowShouldClose(window))
         {
             /* Render here */
-            glClear(GL_COLOR_BUFFER_BIT);
+            renderer.Clear();
 
-            so.Bind();
-            va.Bind();
-            ib.Bind();
+            //so.Bind();
+            //va.Bind();
+            //ib.Bind();
+
+            renderer.Draw(va, ib, so);
 
             GLCall(so.SetUniform4f("u_Color", r, 0.3f, 0.8f, 1.0f));
 
@@ -125,7 +131,7 @@ int main(void)
             }
             r += increment;
             GLClearError();
-            GLCall(glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, nullptr)); // We use nullptr since the indices is bound to GL_ELEMENT_ARRAY_BUFFER
+           // GLCall(glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, nullptr)); // We use nullptr since the indices is bound to GL_ELEMENT_ARRAY_BUFFER
             // above should be GL_UNSIGNED_INT
 
             //glDrawArrays(GL_TRIANGLES, 0, 6);// This alone has the potential to display a drawing if the driver has a default shader built in
