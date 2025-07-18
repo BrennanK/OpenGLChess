@@ -6,6 +6,7 @@
 #include "VertexArray.h"
 #include "VertexBufferLayout.h"
 #include "Shader.h"
+#include "Texture.h"
 #pragma region Docs
 // Really Good Documentation Website for OpenGL
 //https://docs.gl/
@@ -48,10 +49,10 @@ int main(void)
 #pragma region Vertex_Buffer
     {
         float positions[] = {
-            -0.5f,-0.5f, //0
-            0.5f,-0.5f,  //1
-            0.5f,0.5f,   //2
-            -0.5f,0.5f }; //3
+            -0.5f,-0.5f, 0.0f,0.0f,//0
+            0.5f,-0.5f, 1.0f, 0.0f, //1
+            0.5f,0.5f,  1.0f,1.0f, //2
+            -0.5f,0.5f, 0.0f,1.0f}; //3
 
         unsigned int indices[] = // array of indices points such that we can draw multiple triangles without having to store duplicate positions
         {
@@ -59,15 +60,20 @@ int main(void)
             2,3,0
         };
 
+        GLCall(glEnable(GL_BLEND));
+        GLCall(glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA));
+
         unsigned int vao;
         GLCall(glGenVertexArrays(1, &vao));
         GLCall(glBindVertexArray(vao));
 
         VertexArray va;
-        VertexBuffer vb(positions, 4 * 2 * sizeof(float));
+        VertexBuffer vb(positions, 4 * 4 * sizeof(float));
         VertexBufferLayout layout;
         layout.Push<float>(2);
+        layout.Push<float>(2);
         va.AddBuffer(vb, layout);
+
 
 
 #pragma endregion Creates a section of data for our shape data and binds that data to a GPU buffer 
@@ -94,7 +100,12 @@ int main(void)
        
 #pragma endregion Responsible for Passing programs to the GPU for utilizing GPU resources
       
-        
+#pragma region Texture
+        Texture texture("res/textures/kh3_box_art.jpg");
+        texture.Bind();
+        so.Bind();
+        so.SetUniform1i("u_Texture", 0);
+#pragma endregion
         va.Unbind();
         vb.Unbind();
         ib.Unbind();
@@ -119,7 +130,7 @@ int main(void)
 
             renderer.Draw(va, ib, so);
 
-            GLCall(so.SetUniform4f("u_Color", r, 0.3f, 0.8f, 1.0f));
+           GLCall(so.SetUniform4f("u_Color", r, 0.3f, 0.8f, 1.0f));
 
             if (r > 1.0f)
             {
