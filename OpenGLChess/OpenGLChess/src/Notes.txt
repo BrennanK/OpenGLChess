@@ -33,3 +33,13 @@ Vertex Array Notes
 	-A) Create the Vertex Array Object and Bind it 
 	-B) Create a number of buffers and for each buffer enable the attribute array and specify the vertex attribute as an index in the array
 		- Done using glEnableVertexAttribArray and glVertexAttribPointer
+
+Blending- This a term for determining how we take two separate colors and have them interact or how they are ordered in a space
+	How to use blending:
+		1) Use glEnable(GL_BLEND) or glDisable(GL_BLEND)
+		2) Use glBlendFunc(src,dest)
+			src= how the src RGBA factor is computed(default value is GL_ONE)
+			dest= how the dest RGBA factor is computed (default value is GL_ZERO)
+		3) glBlendEquation(mode)
+			mode=how we combine the src and dest colors
+			Default value is GL_FUNC_ADD
