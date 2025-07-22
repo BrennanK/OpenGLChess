@@ -7,6 +7,8 @@
 #include "VertexBufferLayout.h"
 #include "Shader.h"
 #include "Texture.h"
+#include "glm/glm.hpp"
+#include "glm/gtc/matrix_transform.hpp"
 #pragma region Docs
 // Really Good Documentation Website for OpenGL
 //https://docs.gl/
@@ -91,12 +93,16 @@ int main(void)
         IndexBuffer ib(indices, 6);
 #pragma endregion Used to indicate Triangles without duplicating vertices
 
+#pragma region Projection_Matrix
+        glm::mat4 proj = glm::ortho(-2.0f, 2.0f, -1.5f, 1.5f, -1.0f, 1.0f);
+#pragma endregion
 
 #pragma region Shader
 
         Shader so("res/shaders/Basic.shader");
         so.Bind();// We must bind before setting the uniform
         so.SetUniform4f("u_Color",0.8f, 0.3f, 0.8f, 1.0f);
+        so.SetUniformMat4f("u_MVP", proj);
        
 #pragma endregion Responsible for Passing programs to the GPU for utilizing GPU resources
       
