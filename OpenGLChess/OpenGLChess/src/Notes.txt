@@ -43,3 +43,16 @@ Blending- This a term for determining how we take two separate colors and have t
 		3) glBlendEquation(mode)
 			mode=how we combine the src and dest colors
 			Default value is GL_FUNC_ADD
+
+Projection Matrix- Typically when it comes to translating objecs from a world space to a screen projection or screen space we typically use a projection matrix
+	1) When it comes to using this we end up with values that fall in between -1 and 1 with them representing values on an axis (-1 is left/down and 1 is right/up)
+	2) We generally have 2 types of projection Orthogonal and Perspective
+		Orthogonal is a type of projection that does not display depth based on distance to camera and is typically but not always used fr 2D
+		Perspective is a type of projection that does display depth based on distance from the camera so that further away objects appear smaller
+	3) Anything that is larger or smaller than the -1 to 1 scope then that part or area of an object(s) is not rendered
+	4) Our Orthogonal/Perspective matrix is what defines the range for the world space and could be anyhting depending on what we want
+		Ex: if we have 720 by 480 window than we could define it like ortho(left,rightdown,up) to be ortho(0,720,0,480) and that would be the scale for the objects size on screen
+			aka if with this size a square with vertx positions that yield an area of 1 would be too small to see but if they are positioned well with a larger range 
+			they are more visible
+	5) At the end f the day though regardless of how we size our projection matrix the end result for our vertex positions on screen will still be in 
+		a range of -1 to 1 for each axisvalue

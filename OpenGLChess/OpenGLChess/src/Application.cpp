@@ -51,10 +51,10 @@ int main(void)
 #pragma region Vertex_Buffer
     {
         float positions[] = {
-            -0.5f,-0.5f, 0.0f,0.0f,//0
-            0.5f,-0.5f, 1.0f, 0.0f, //1
-            0.5f,0.5f,  1.0f,1.0f, //2
-            -0.5f,0.5f, 0.0f,1.0f}; //3
+            120.5f,120.5f, 0.0f,0.0f,//0
+            240.5f,120.5f, 1.0f, 0.0f, //1
+            240.5f,240.5f,  1.0f,1.0f, //2
+            120.5f,240.5f, 0.0f,1.0f}; //3
 
         unsigned int indices[] = // array of indices points such that we can draw multiple triangles without having to store duplicate positions
         {
@@ -94,7 +94,7 @@ int main(void)
 #pragma endregion Used to indicate Triangles without duplicating vertices
 
 #pragma region Projection_Matrix
-        glm::mat4 proj = glm::ortho(-2.0f, 2.0f, -1.5f, 1.5f, -1.0f, 1.0f);
+        glm::mat4 proj = glm::ortho(0.0f, 1280.0f, 0.0f, 720.0f, -1.0f, 1.0f);
 #pragma endregion
 
 #pragma region Shader
