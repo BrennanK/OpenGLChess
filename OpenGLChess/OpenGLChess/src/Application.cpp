@@ -95,6 +95,10 @@ int main(void)
 
 #pragma region Projection_Matrix
         glm::mat4 proj = glm::ortho(0.0f, 1280.0f, 0.0f, 720.0f, -1.0f, 1.0f);
+        glm::mat4 view=glm::translate(glm::mat4(1.0f), glm::vec3(-100, 0, 0));
+        glm::mat4 model = glm::translate(glm::mat4(1.0f), glm::vec3(200, 200, 0));
+
+        glm::mat4 mvp = proj * view* model;
 #pragma endregion
 
 #pragma region Shader
@@ -102,7 +106,7 @@ int main(void)
         Shader so("res/shaders/Basic.shader");
         so.Bind();// We must bind before setting the uniform
         so.SetUniform4f("u_Color",0.8f, 0.3f, 0.8f, 1.0f);
-        so.SetUniformMat4f("u_MVP", proj);
+        so.SetUniformMat4f("u_MVP", mvp);
        
 #pragma endregion Responsible for Passing programs to the GPU for utilizing GPU resources
       

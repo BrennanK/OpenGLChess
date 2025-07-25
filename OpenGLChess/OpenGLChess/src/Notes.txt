@@ -56,3 +56,13 @@ Projection Matrix- Typically when it comes to translating objecs from a world sp
 			they are more visible
 	5) At the end f the day though regardless of how we size our projection matrix the end result for our vertex positions on screen will still be in 
 		a range of -1 to 1 for each axisvalue
+
+Model View Projection- Is a set of matrices that define how vertices of a model or object is projected on the screen for rendering a view
+	1) View Matrix- The view matrix is a matrix responsible for helping translate vertices for camera space aka what the camera actually sees
+		-Includes rotation, position, scale of camera
+	2) Model Matrix- The model matrix is responsible for helping translate vertices for models in world space
+		-Includes position, rotation and scale
+	3) It is when the model,view, and projection matices get multiplied together that we get the final result for vertex positions for a rendered frame
+		Be aware that while all 3 are multiplied together the order is not always model then view then projection it can vary based on pipeline
+	4) For respresnting a camera shift, we don't actually shift the camera we simply move every object around the camera instead
+		-Ex: If we want to simulate the camera moving right then we will move every object left
