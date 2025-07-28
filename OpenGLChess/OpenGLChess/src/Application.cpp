@@ -9,6 +9,9 @@
 #include "Texture.h"
 #include "glm/glm.hpp"
 #include "glm/gtc/matrix_transform.hpp"
+#include <imgui/imgui.h>
+#include <imgui/imgui_impl_glfw.h>
+#include <imgui/imgui_impl_opengl3.h>
 #pragma region Docs
 // Really Good Documentation Website for OpenGL
 //https://docs.gl/
@@ -97,7 +100,7 @@ int main(void)
         glm::mat4 proj = glm::ortho(0.0f, 1280.0f, 0.0f, 720.0f, -1.0f, 1.0f);
         glm::mat4 view=glm::translate(glm::mat4(1.0f), glm::vec3(-100, 0, 0));
         glm::mat4 model = glm::translate(glm::mat4(1.0f), glm::vec3(200, 200, 0));
-
+        glm::vec3 translation = glm::vec3(200, 200, 0);
         glm::mat4 mvp = proj * view* model;
 #pragma endregion
 
@@ -125,6 +128,22 @@ int main(void)
 
         float r = 0.0f;
         float increment = 0.05f;
+#pragma region ImGui
+        //initialization (after renderer )
+        IMGUI_CHECKVERSION();
+        ImGui::CreateContext();
+        ImGui_ImplGlfw_InitForOpenGL(window, true);
+        ImGui::StyleColorsDark();
+        ImGui_ImplOpenGL3_Init((char*)glGetString(330));
+
+        // set up values
+            bool show_demo_window = true;
+        bool show_another_window = false;
+        ImVec4 clear_color = ImVec4(0.45f, 0.55f, 0.60f, 1.00f);
+
+
+
+#pragma endregion
 
 #pragma endregion
 
@@ -133,24 +152,59 @@ int main(void)
         {
             /* Render here */
             renderer.Clear();
-
+            
+            // Inside while befor edrraw
+            ImGui_ImplOpenGL3_NewFrame();
+            ImGui_ImplGlfw_NewFrame();
+            ImGui::NewFrame();
             //so.Bind();
             //va.Bind();
             //ib.Bind();
 
             renderer.Draw(va, ib, so);
 
-           GLCall(so.SetUniform4f("u_Color", r, 0.3f, 0.8f, 1.0f));
+            // Post draw
+            static float f = 0.0f;
+            static int counter = 0;
 
-            if (r > 1.0f)
+            if (show_demo_window)
+                ImGui::ShowDemoWindow(&show_demo_window);
+
+            // 2. Show a simple window that we create ourselves. We use a Begin/End pair to created a named window.
             {
-                increment = -0.05f;
+                static float f = 0.0f;
+                static int counter = 0;
+
+                ImGui::Begin("Hello, world!");                          // Create a window called "Hello, world!" and append into it.
+
+                ImGui::Text("This is some useful text.");               // Display some text (you can use a format strings too)
+                ImGui::Checkbox("Demo Window", &show_demo_window);      // Edit bools storing our window open/close state
+                ImGui::Checkbox("Another Window", &show_another_window);
+
+                ImGui::SliderFloat3("Translation", &translation.x, 0.0f, 1280.0f);            // Edit 1 float using a slider from 0.0f to 1.0f
+                ImGui::ColorEdit3("clear color", (float*)&clear_color); // Edit 3 floats representing a color
+
+                if (ImGui::Button("Button"))                            // Buttons return true when clicked (most widgets return true when                       edited/activated)
+                    counter++;
+                ImGui::SameLine();
+                ImGui::Text("counter = %d", counter);
+
+                ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
+
+                model = glm::translate(glm::mat4(1.0f), translation);
+
+                mvp = proj * view * model;
+                so.SetUniformMat4f("u_MVP", mvp);
+
+                ImGui::End();
             }
-            else if (r < 0.0f)
-            {
-                increment = 0.05f;
-            }
-            r += increment;
+
+            
+
+            ImGui::Render();
+            ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
+           
+            
             GLClearError();
            // GLCall(glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, nullptr)); // We use nullptr since the indices is bound to GL_ELEMENT_ARRAY_BUFFER
             // above should be GL_UNSIGNED_INT
@@ -163,7 +217,10 @@ int main(void)
             /* Poll for and process events */
             glfwPollEvents();
         }
-
+        // After while loop cleanup
+        ImGui_ImplOpenGL3_Shutdown();
+        ImGui_ImplGlfw_Shutdown();
+        ImGui::DestroyContext();
         //glDeleteProgram(shader);
     }
     glfwTerminate();
