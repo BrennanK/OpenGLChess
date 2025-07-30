@@ -54,10 +54,10 @@ int main(void)
 #pragma region Vertex_Buffer
     {
         float positions[] = {
-            120.5f,120.5f, 0.0f,0.0f,//0
-            240.5f,120.5f, 1.0f, 0.0f, //1
-            240.5f,240.5f,  1.0f,1.0f, //2
-            120.5f,240.5f, 0.0f,1.0f}; //3
+            -50.0f,-50.0f, 0.0f,0.0f,//0
+            50.0f,-50.0f, 1.0f, 0.0f, //1
+            50.0f,50.0f,  1.0f,1.0f, //2
+            -50.0f,50.0f, 0.0f,1.0f}; //3
 
         unsigned int indices[] = // array of indices points such that we can draw multiple triangles without having to store duplicate positions
         {
@@ -98,10 +98,11 @@ int main(void)
 
 #pragma region Projection_Matrix
         glm::mat4 proj = glm::ortho(0.0f, 1280.0f, 0.0f, 720.0f, -1.0f, 1.0f);
-        glm::mat4 view=glm::translate(glm::mat4(1.0f), glm::vec3(-100, 0, 0));
-        glm::mat4 model = glm::translate(glm::mat4(1.0f), glm::vec3(200, 200, 0));
-        glm::vec3 translation = glm::vec3(200, 200, 0);
-        glm::mat4 mvp = proj * view* model;
+        glm::mat4 view=glm::translate(glm::mat4(1.0f), glm::vec3(0, 0, 0));
+
+        glm::vec3 translationA = glm::vec3(0, 0, 0);
+        glm::vec3 translationB = glm::vec3(200, 200, 0);
+        
 #pragma endregion
 
 #pragma region Shader
@@ -109,7 +110,7 @@ int main(void)
         Shader so("res/shaders/Basic.shader");
         so.Bind();// We must bind before setting the uniform
         so.SetUniform4f("u_Color",0.8f, 0.3f, 0.8f, 1.0f);
-        so.SetUniformMat4f("u_MVP", mvp);
+        
        
 #pragma endregion Responsible for Passing programs to the GPU for utilizing GPU resources
       
@@ -160,8 +161,21 @@ int main(void)
             //so.Bind();
             //va.Bind();
             //ib.Bind();
-
-            renderer.Draw(va, ib, so);
+            so.Bind();
+            {
+                glm::mat4 model = glm::translate(glm::mat4(1.0f), translationA);
+                glm::mat4 mvp = proj * view * model;
+                so.SetUniformMat4f("u_MVP", mvp);
+                renderer.Draw(va, ib, so);
+            }
+            
+            {
+                glm::mat4 model = glm::translate(glm::mat4(1.0f), translationB);
+                glm::mat4 mvp = proj * view * model;
+                so.SetUniformMat4f("u_MVP", mvp);
+                renderer.Draw(va, ib, so);
+            }
+           
 
             // Post draw
             static float f = 0.0f;
@@ -177,24 +191,18 @@ int main(void)
 
                 ImGui::Begin("Hello, world!");                          // Create a window called "Hello, world!" and append into it.
 
-                ImGui::Text("This is some useful text.");               // Display some text (you can use a format strings too)
                 ImGui::Checkbox("Demo Window", &show_demo_window);      // Edit bools storing our window open/close state
                 ImGui::Checkbox("Another Window", &show_another_window);
 
-                ImGui::SliderFloat3("Translation", &translation.x, 0.0f, 1280.0f);            // Edit 1 float using a slider from 0.0f to 1.0f
-                ImGui::ColorEdit3("clear color", (float*)&clear_color); // Edit 3 floats representing a color
-
-                if (ImGui::Button("Button"))                            // Buttons return true when clicked (most widgets return true when                       edited/activated)
-                    counter++;
-                ImGui::SameLine();
-                ImGui::Text("counter = %d", counter);
+                ImGui::SliderFloat3("Translation", &translationA.x, 0.0f, 1280.0f);            // Edit 1 float using a slider from 0.0f to 1.0f
+                ImGui::SliderFloat3("Translation2", &translationB.x, 0.0f, 1280.0f);
 
                 ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
 
-                model = glm::translate(glm::mat4(1.0f), translation);
+               // model = glm::translate(glm::mat4(1.0f), translationA);
 
-                mvp = proj * view * model;
-                so.SetUniformMat4f("u_MVP", mvp);
+              //  mvp = proj * view * model;
+               // so.SetUniformMat4f("u_MVP", mvp);
 
                 ImGui::End();
             }
