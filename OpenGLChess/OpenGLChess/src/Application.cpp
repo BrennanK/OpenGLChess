@@ -12,6 +12,7 @@
 #include <imgui/imgui.h>
 #include <imgui/imgui_impl_glfw.h>
 #include <imgui/imgui_impl_opengl3.h>
+#include "Tests/TestClearColor.h"
 #pragma region Docs
 // Really Good Documentation Website for OpenGL
 //https://docs.gl/
@@ -29,7 +30,7 @@ int main(void)
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
     /* Create a windowed mode window and its OpenGL context */
-    window = glfwCreateWindow(640*2, 720, "Hello World", NULL, NULL);
+    window = glfwCreateWindow(640*2, 720, "Chess", NULL, NULL);
     if (!window)
     {
         glfwTerminate();
@@ -148,16 +149,24 @@ int main(void)
 
 #pragma endregion
 
+        test::TestClearColor test;
+
         /* Loop until the user closes the window */
         while (!glfwWindowShouldClose(window))
         {
             /* Render here */
             renderer.Clear();
-            
+          
+
             // Inside while befor edrraw
             ImGui_ImplOpenGL3_NewFrame();
             ImGui_ImplGlfw_NewFrame();
             ImGui::NewFrame();
+
+            test.OnUpdate(0.0f);
+            test.onRenderer();
+            test.OnImGuiRenderer();
+            /*
             //so.Bind();
             //va.Bind();
             //ib.Bind();
@@ -208,7 +217,7 @@ int main(void)
             }
 
             
-
+            */
             ImGui::Render();
             ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
            
