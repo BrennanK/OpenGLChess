@@ -13,6 +13,7 @@
 #include <imgui/imgui_impl_glfw.h>
 #include <imgui/imgui_impl_opengl3.h>
 #include "Tests/TestClearColor.h"
+#include "Tests/TestScaleTexture.h"
 #pragma region Docs
 // Really Good Documentation Website for OpenGL
 //https://docs.gl/
@@ -72,7 +73,7 @@ int main(void)
         unsigned int vao;
         GLCall(glGenVertexArrays(1, &vao));
         GLCall(glBindVertexArray(vao));
-
+        positions[8] = 150.0f; positions[9] = 150.0f;
         VertexArray va;
         VertexBuffer vb(positions, 4 * 4 * sizeof(float));
         VertexBufferLayout layout;
@@ -80,7 +81,8 @@ int main(void)
         layout.Push<float>(2);
         va.AddBuffer(vb, layout);
 
-
+       
+       
 
 #pragma endregion Creates a section of data for our shape data and binds that data to a GPU buffer 
 
@@ -143,14 +145,14 @@ int main(void)
         bool show_another_window = false;
         ImVec4 clear_color = ImVec4(0.45f, 0.55f, 0.60f, 1.00f);
 
-
+       
 
 #pragma endregion
 
 #pragma endregion
 
         test::TestClearColor test;
-
+        test::TestScaleTexture scaleTest;
         /* Loop until the user closes the window */
         while (!glfwWindowShouldClose(window))
         {
@@ -166,7 +168,7 @@ int main(void)
             test.OnUpdate(0.0f);
             test.onRenderer();
             test.OnImGuiRenderer();
-            /*
+            
             //so.Bind();
             //va.Bind();
             //ib.Bind();
@@ -175,9 +177,13 @@ int main(void)
                 glm::mat4 model = glm::translate(glm::mat4(1.0f), translationA);
                 glm::mat4 mvp = proj * view * model;
                 so.SetUniformMat4f("u_MVP", mvp);
-                renderer.Draw(va, ib, so);
+               // renderer.Draw(va, ib, so);
+                scaleTest.OnUpdate(0.0f);
+                scaleTest.onRenderer(renderer,va,ib,so);
+                scaleTest.OnImGuiRenderer();
+                ImGui::SliderFloat3("Translation", &translationA.x, 0.0f, 1280.0f);
             }
-            
+            /*
             {
                 glm::mat4 model = glm::translate(glm::mat4(1.0f), translationB);
                 glm::mat4 mvp = proj * view * model;

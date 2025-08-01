@@ -150,6 +150,7 @@
     <ClCompile Include="src\VertexBuffer.cpp" />
     <ClCompile Include="src\VertexArray.cpp" />
     <ClCompile Include="src\Texture.cpp" />
+    <ClCompile Include="src\Tests\TestScaleTexture.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="src\Notes.txt" />
@@ -432,6 +433,7 @@
     <ClInclude Include="src\VertexArray.h" />
     <ClInclude Include="src\VertexBufferLayout.h" />
     <ClInclude Include="src\Texture.h" />
+    <ClInclude Include="src\Tests\TestScaleTexture.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\textures\kh3_box_art.jpg" />
