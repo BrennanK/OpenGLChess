@@ -13,5 +13,7 @@ public:
 
 	void Bind() const;
 	void Unbind() const;
+	void DeleteArray() const;
+	void clearVertexAttributeArray(const VertexBufferLayout& layout, unsigned int& vao);
 };
 

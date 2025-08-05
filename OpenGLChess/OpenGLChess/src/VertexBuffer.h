@@ -9,5 +9,7 @@ public:
 	~VertexBuffer();
 	void Bind() const;
 	void Unbind() const;
+	void DeleteBuffer() const;
+	void ChangeData(const void* data, unsigned int size);
 };
 

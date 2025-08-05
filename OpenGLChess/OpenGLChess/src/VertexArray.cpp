@@ -36,3 +36,17 @@ void VertexArray::Unbind() const
 {
 	GLCall(glBindVertexArray(0));
 }
+
+void VertexArray::DeleteArray() const
+{
+	glDeleteVertexArrays(1, &m_RendererID);
+}
+
+void VertexArray::clearVertexAttributeArray(const VertexBufferLayout& layout,unsigned int& vao)
+{
+	const auto& elements = layout.GetElements();
+	for (unsigned int i = 0; i < elements.size(); i++)
+	{
+		GLCall(glDisableVertexArrayAttrib(vao,i));
+	}
+}

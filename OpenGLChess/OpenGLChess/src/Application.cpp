@@ -73,16 +73,16 @@ int main(void)
         unsigned int vao;
         GLCall(glGenVertexArrays(1, &vao));
         GLCall(glBindVertexArray(vao));
-        positions[8] = 150.0f; positions[9] = 150.0f;
-        VertexArray va;
-        VertexBuffer vb(positions, 4 * 4 * sizeof(float));
-        VertexBufferLayout layout;
-        layout.Push<float>(2);
-        layout.Push<float>(2);
-        va.AddBuffer(vb, layout);
-
+       // positions[8] = 150.0f; positions[9] = 150.0f;
        
-       
+        
+        test::TestScaleTexture scaleTest;
+        VertexArray va2;
+        VertexBuffer vb2(positions, 4 * 4 * sizeof(float));
+        VertexBufferLayout layout2;
+        layout2.Push<float>(2);
+        layout2.Push<float>(2);
+        va2.AddBuffer(vb2, layout2);
 
 #pragma endregion Creates a section of data for our shape data and binds that data to a GPU buffer 
 
@@ -123,10 +123,9 @@ int main(void)
         so.Bind();
         so.SetUniform1i("u_Texture", 0);
 #pragma endregion
-        va.Unbind();
-        vb.Unbind();
-        ib.Unbind();
-        so.Unbind();
+       // va.Unbind();
+       // vb.Unbind();
+        
 
         Renderer renderer;
 
@@ -146,13 +145,18 @@ int main(void)
         ImVec4 clear_color = ImVec4(0.45f, 0.55f, 0.60f, 1.00f);
 
        
+       
+
 
 #pragma endregion
 
 #pragma endregion
 
         test::TestClearColor test;
-        test::TestScaleTexture scaleTest;
+      //  test::TestScaleTexture scaleTest;
+       // vb.DeleteBuffer();
+       // va.DeleteArray();
+        
         /* Loop until the user closes the window */
         while (!glfwWindowShouldClose(window))
         {
@@ -178,8 +182,9 @@ int main(void)
                 glm::mat4 mvp = proj * view * model;
                 so.SetUniformMat4f("u_MVP", mvp);
                // renderer.Draw(va, ib, so);
-                scaleTest.OnUpdate(0.0f);
-                scaleTest.onRenderer(renderer,va,ib,so);
+                
+                scaleTest.OnUpdate(0.0f,vao,&va2,&vb2,layout2,positions,16);
+                scaleTest.onRenderer(renderer,va2,ib,so);
                 scaleTest.OnImGuiRenderer();
                 ImGui::SliderFloat3("Translation", &translationA.x, 0.0f, 1280.0f);
             }
