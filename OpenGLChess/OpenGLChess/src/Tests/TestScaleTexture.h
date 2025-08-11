@@ -5,6 +5,8 @@
 #include "../Shader.h"
 #include "../Renderer.h"
 #include "../VertexBufferLayout.h"
+#include "glm/glm.hpp"
+#include "glm/gtc/matrix_transform.hpp"
 
 struct data
 {
@@ -17,14 +19,17 @@ namespace test
 	class TestScaleTexture: public Test
 	{
 	public:
-		TestScaleTexture();
+		TestScaleTexture(float(&positions)[16],int count);
 		~TestScaleTexture();
-		data OnUpdate(float deltaTime, unsigned int& vao, VertexArray* va, VertexBuffer* vb, VertexBufferLayout& layout, float(&positions)[16], int size);
+		void OnUpdate(float deltaTime, float* positions, int size);
 		void onRenderer(Renderer& renderer, VertexArray& va,  IndexBuffer& ib,  Shader& shader);
 		void OnImGuiRenderer() override;
 
 	private:
 		float m_ScaleValue;
+		int	  m_count;
+		float m_scaledPositions[16];
+		
 	};
 }
 

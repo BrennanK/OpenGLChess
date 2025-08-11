@@ -61,6 +61,7 @@ int main(void)
             50.0f,50.0f,  1.0f,1.0f, //2
             -50.0f,50.0f, 0.0f,1.0f}; //3
 
+
         unsigned int indices[] = // array of indices points such that we can draw multiple triangles without having to store duplicate positions
         {
             0,1,2,
@@ -76,13 +77,17 @@ int main(void)
        // positions[8] = 150.0f; positions[9] = 150.0f;
        
         
-        test::TestScaleTexture scaleTest;
+        test::TestScaleTexture scaleTest(positions,16);
         VertexArray va2;
         VertexBuffer vb2(positions, 4 * 4 * sizeof(float));
         VertexBufferLayout layout2;
         layout2.Push<float>(2);
         layout2.Push<float>(2);
+        //scaleTest.OnUpdate(0.0f, vao, &va2, &vb2, layout2, positions, 16);
         va2.AddBuffer(vb2, layout2);
+        //glBufferData(GL_ARRAY_BUFFER, 4 * 4 * sizeof(float), nullptr, GL_STREAM_DRAW);
+        //glBufferSubData(GL_ARRAY_BUFFER, 0, 4 * 4 * sizeof(float), positions2);
+        //scaleTest.OnUpdate(0.0f, vao, &va2, &vb2, layout2, positions, 16);
 
 #pragma endregion Creates a section of data for our shape data and binds that data to a GPU buffer 
 
@@ -103,8 +108,8 @@ int main(void)
         glm::mat4 proj = glm::ortho(0.0f, 1280.0f, 0.0f, 720.0f, -1.0f, 1.0f);
         glm::mat4 view=glm::translate(glm::mat4(1.0f), glm::vec3(0, 0, 0));
 
-        glm::vec3 translationA = glm::vec3(0, 0, 0);
-        glm::vec3 translationB = glm::vec3(200, 200, 0);
+        glm::vec3 translationA = glm::vec3(200, 200, 0);
+        glm::vec3 scaleTranslation = glm::vec3(0, 0, 0);
         
 #pragma endregion
 
@@ -177,17 +182,16 @@ int main(void)
             //va.Bind();
             //ib.Bind();
             so.Bind();
-            {
+            
                 glm::mat4 model = glm::translate(glm::mat4(1.0f), translationA);
                 glm::mat4 mvp = proj * view * model;
                 so.SetUniformMat4f("u_MVP", mvp);
                // renderer.Draw(va, ib, so);
-                
-                scaleTest.OnUpdate(0.0f,vao,&va2,&vb2,layout2,positions,16);
+                scaleTest.OnUpdate(0.0f,positions,16);
                 scaleTest.onRenderer(renderer,va2,ib,so);
                 scaleTest.OnImGuiRenderer();
                 ImGui::SliderFloat3("Translation", &translationA.x, 0.0f, 1280.0f);
-            }
+            
             /*
             {
                 glm::mat4 model = glm::translate(glm::mat4(1.0f), translationB);

@@ -3,8 +3,12 @@
 #include <imgui/imgui.h>
 namespace test
 {
-	TestScaleTexture::TestScaleTexture():m_ScaleValue(2.0f)
+	TestScaleTexture::TestScaleTexture(float(&positions)[16],int count):m_ScaleValue(2.0f),m_count(count)
 	{
+		for (int i = 0; i < count; i++)
+		{
+			m_scaledPositions[i] = positions[i];
+		}
 	}
 
 	TestScaleTexture::~TestScaleTexture()
@@ -12,7 +16,7 @@ namespace test
 	}
 
 	
-	data TestScaleTexture::OnUpdate(float deltaTime,unsigned int& vao ,VertexArray* va, VertexBuffer* vb,VertexBufferLayout& layout, float(&positions)[16], int size)
+	void TestScaleTexture::OnUpdate(float deltaTime, float* positions, int size)
 	{
 		/*	To Do:
 		*		Clear Vertex Array
@@ -21,31 +25,21 @@ namespace test
 				Re-add Vertex Buffer to Vertex Array
 		*/
 		
-		data returnValue{};
+		float scaledPositions[16];
 
 		for (int i = 0; i < size; i++)
 		{
 			if (i % 4 == 0 || i % 4 == 1)
 			{
-				positions[i] = 50.0f * m_ScaleValue;
+				//newPositions[i] = positions[i] * m_ScaleValue;
+				m_scaledPositions[i] = positions[i] * m_ScaleValue;
 			}
-			returnValue.points[i] = positions[i];
+			//returnValue.points[i] = positions[i];
 		}
-		
-		//va->DeleteArray();
-		//va->Unbind();
-
-		//*va = VertexArray();
-
-		//vb->DeleteBuffer();
-		//vb->Unbind();
-
-		//*vb = VertexBuffer(returnValue.points, 4 * 4 * sizeof(float));
-		//va->clearVertexAttributeArray(layout,vao);
-		//va->AddBuffer(*vb, layout);
-
-		vb->ChangeData(positions,4*4*sizeof(float));
-		return returnValue;
+		//vb->Bind();
+		glBufferSubData(GL_ARRAY_BUFFER, 0, size * sizeof(float), m_scaledPositions);
+	//	glBufferSubData(GL_ARRAY_BUFFER, 0, 4 * 4 * sizeof(float),positions);
+		//return returnValue;
 		
 	}
 
