@@ -191,7 +191,7 @@ int main(void)
                 //scaleTest.onRenderer(renderer,va2,ib,so);
                 //scaleTest.OnImGuiRenderer();
                 ImGui::SliderFloat3("Translation", &translationA.x, 0.0f, 1280.0f);
-                texTest.OnImGuiRenderer();
+                texTest.OnImGuiRenderer(texture);
                 ImGui::ShowDemoWindow();
             /*
             {

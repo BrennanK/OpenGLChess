@@ -3,6 +3,7 @@
 #include <imgui/imgui.h>
 #include <imgui/imgui_stdlib.h>
 #include <iostream>
+
 namespace test
 {
 	TextureTest::TextureTest()
@@ -13,18 +14,23 @@ namespace test
 	}
 	void TextureTest::OnUpdate(float deltaTime)
 	{
-		m_FilePath = "res/textures/";
-		m_FilePath.append(m_FileName);
+		
 	}
 	void TextureTest::onRenderer()
 	{
 
 	}
-	void TextureTest::OnImGuiRenderer()
+	void TextureTest::OnImGuiRenderer(Texture& texture)
 	{
 		//ImGui::ShowDemoWindow();
 		ImGui::InputText("Image Name", &m_FileName);
-		ImGui::Button("Select Image");
+		if (ImGui::Button("Select Image"))
+		{
+			m_FilePath = "res/textures/";
+			m_FilePath.append(m_FileName);
+			std::cout << m_FilePath << std::endl;
+			texture.changeTexture(m_FilePath);
+		}
 		
 		//std::cout << m_FileName << std::endl;
 	}
