@@ -14,6 +14,7 @@
 #include <imgui/imgui_impl_opengl3.h>
 #include "Tests/TestClearColor.h"
 #include "Tests/TestScaleTexture.h"
+#include "Tests/TextureTest.h"
 #pragma region Docs
 // Really Good Documentation Website for OpenGL
 //https://docs.gl/
@@ -56,10 +57,10 @@ int main(void)
 #pragma region Vertex_Buffer
     {
         float positions[] = {
-            -50.0f,-50.0f, 0.0f,0.0f,//0
-            50.0f,-50.0f, 1.0f, 0.0f, //1
-            50.0f,50.0f,  1.0f,1.0f, //2
-            -50.0f,50.0f, 0.0f,1.0f}; //3
+            -150.0f,-150.0f, 0.0f,0.0f,//0
+            150.0f,-150.0f, 1.0f, 0.0f, //1
+            150.0f,150.0f,  1.0f,1.0f, //2
+            -150.0f,150.0f, 0.0f,1.0f}; //3
 
 
         unsigned int indices[] = // array of indices points such that we can draw multiple triangles without having to store duplicate positions
@@ -159,8 +160,7 @@ int main(void)
 
         test::TestClearColor test;
       //  test::TestScaleTexture scaleTest;
-       // vb.DeleteBuffer();
-       // va.DeleteArray();
+        test::TextureTest texTest;
         
         /* Loop until the user closes the window */
         while (!glfwWindowShouldClose(window))
@@ -174,7 +174,7 @@ int main(void)
             ImGui_ImplGlfw_NewFrame();
             ImGui::NewFrame();
 
-            test.OnUpdate(0.0f);
+           // test.OnUpdate(0.0f);
             test.onRenderer();
             test.OnImGuiRenderer();
             
@@ -186,12 +186,13 @@ int main(void)
                 glm::mat4 model = glm::translate(glm::mat4(1.0f), translationA);
                 glm::mat4 mvp = proj * view * model;
                 so.SetUniformMat4f("u_MVP", mvp);
-               // renderer.Draw(va, ib, so);
-                scaleTest.OnUpdate(0.0f,positions,16);
-                scaleTest.onRenderer(renderer,va2,ib,so);
-                scaleTest.OnImGuiRenderer();
+                renderer.Draw(va2, ib, so);
+                //scaleTest.OnUpdate(0.0f,positions,16);
+                //scaleTest.onRenderer(renderer,va2,ib,so);
+                //scaleTest.OnImGuiRenderer();
                 ImGui::SliderFloat3("Translation", &translationA.x, 0.0f, 1280.0f);
-            
+                texTest.OnImGuiRenderer();
+                ImGui::ShowDemoWindow();
             /*
             {
                 glm::mat4 model = glm::translate(glm::mat4(1.0f), translationB);

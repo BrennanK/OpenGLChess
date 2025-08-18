@@ -72,6 +72,12 @@
     <ClCompile Include="src\Tests\TestScaleTexture.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\Tests\TextureTest.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\vendor\imgui\imgui_stdlib.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="src\Notes.txt" />
@@ -905,9 +911,21 @@
     <ClInclude Include="src\Tests\TestScaleTexture.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\Tests\TextureTest.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\vendor\imgui\imgui_stdlib.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\textures\kh3_box_art.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\textures\nice gear hand.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\textures\Miles Leap of Faith.png">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>
