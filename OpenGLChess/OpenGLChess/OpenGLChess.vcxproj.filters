@@ -928,5 +928,107 @@
     <Image Include="res\textures\Miles Leap of Faith.png">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="res\textures\Krita logo.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\textures\learning.png.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\textures\left click.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\textures\line gun.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\textures\MainCharacter_Base.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\textures\maxresdefault.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\textures\Maya example.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\textures\Maya LT.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\textures\Minecraft.PNG">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\textures\morgana.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\textures\mstar.PNG">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\textures\My adjustments to main menu blueprint.PNG">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\textures\My character creator.PNG">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\textures\new battle system.PNG">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\textures\new character.PNG">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\textures\New gears.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\textures\New Main Menu.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\textures\new surprise.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\textures\newell-steam-header.jpg.optimal.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\textures\nice gear.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\textures\original battle system.PNG">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\textures\pac_man.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\textures\PBS 2.PNG">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\textures\PBS slide 3.PNG">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\textures\PBS start.PNG">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\textures\planetarium.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\textures\planto base.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\textures\PlaylistParadigmDiagram.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\textures\Print percentages.PNG">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\textures\purpose.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\textures\red coin.PNG">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\textures\return 2.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\textures\return to origin.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\textures\returning to origin.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>

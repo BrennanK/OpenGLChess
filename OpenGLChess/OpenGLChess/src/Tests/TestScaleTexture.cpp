@@ -3,7 +3,7 @@
 #include <imgui/imgui.h>
 namespace test
 {
-	TestScaleTexture::TestScaleTexture(float(&positions)[16],int count):m_ScaleValue(2.0f),m_count(count)
+	TestScaleTexture::TestScaleTexture(float(&positions)[16],int count):m_ScaleValue(1.0f),m_count(count)
 	{
 		for (int i = 0; i < count; i++)
 		{

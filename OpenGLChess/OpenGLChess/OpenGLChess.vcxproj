@@ -441,8 +441,42 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\textures\kh3_box_art.jpg" />
+    <Image Include="res\textures\Krita logo.jpg" />
+    <Image Include="res\textures\learning.png.jpg" />
+    <Image Include="res\textures\left click.png" />
+    <Image Include="res\textures\line gun.jpg" />
+    <Image Include="res\textures\MainCharacter_Base.png" />
+    <Image Include="res\textures\maxresdefault.jpg" />
+    <Image Include="res\textures\Maya example.jpg" />
+    <Image Include="res\textures\Maya LT.jpg" />
     <Image Include="res\textures\Miles Leap of Faith.png" />
+    <Image Include="res\textures\Minecraft.PNG" />
+    <Image Include="res\textures\morgana.jpg" />
+    <Image Include="res\textures\mstar.PNG" />
+    <Image Include="res\textures\My adjustments to main menu blueprint.PNG" />
+    <Image Include="res\textures\My character creator.PNG" />
+    <Image Include="res\textures\new battle system.PNG" />
+    <Image Include="res\textures\new character.PNG" />
+    <Image Include="res\textures\New gears.jpg" />
+    <Image Include="res\textures\New Main Menu.png" />
+    <Image Include="res\textures\new surprise.png" />
+    <Image Include="res\textures\newell-steam-header.jpg.optimal.jpg" />
     <Image Include="res\textures\nice gear hand.png" />
+    <Image Include="res\textures\nice gear.jpg" />
+    <Image Include="res\textures\original battle system.PNG" />
+    <Image Include="res\textures\pac_man.png" />
+    <Image Include="res\textures\PBS 2.PNG" />
+    <Image Include="res\textures\PBS slide 3.PNG" />
+    <Image Include="res\textures\PBS start.PNG" />
+    <Image Include="res\textures\planetarium.jpg" />
+    <Image Include="res\textures\planto base.png" />
+    <Image Include="res\textures\PlaylistParadigmDiagram.png" />
+    <Image Include="res\textures\Print percentages.PNG" />
+    <Image Include="res\textures\purpose.jpg" />
+    <Image Include="res\textures\red coin.PNG" />
+    <Image Include="res\textures\return 2.jpg" />
+    <Image Include="res\textures\return to origin.jpg" />
+    <Image Include="res\textures\returning to origin.jpg" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

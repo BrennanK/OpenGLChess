@@ -174,9 +174,7 @@ int main(void)
             ImGui_ImplGlfw_NewFrame();
             ImGui::NewFrame();
 
-           // test.OnUpdate(0.0f);
-            test.onRenderer();
-            test.OnImGuiRenderer();
+           
             
             //so.Bind();
             //va.Bind();
@@ -187,12 +185,23 @@ int main(void)
                 glm::mat4 mvp = proj * view * model;
                 so.SetUniformMat4f("u_MVP", mvp);
                 renderer.Draw(va2, ib, so);
-                //scaleTest.OnUpdate(0.0f,positions,16);
-                //scaleTest.onRenderer(renderer,va2,ib,so);
-                //scaleTest.OnImGuiRenderer();
+                // test.OnUpdate(0.0f);
+               
+                ImGui::PushStyleVar(ImGuiStyleVar_ItemSpacing, ImVec2(0.0f, 25.0f)); // 10px horizontal, 5px vertical
+                // Your widgets here
+                test.onRenderer();
+                test.OnImGuiRenderer();
+               
+                scaleTest.OnUpdate(0.0f, positions, 16);
+                scaleTest.onRenderer(renderer, va2, ib, so);
+                scaleTest.OnImGuiRenderer();
+                
                 ImGui::SliderFloat3("Translation", &translationA.x, 0.0f, 1280.0f);
                 texTest.OnImGuiRenderer(texture);
-                ImGui::ShowDemoWindow();
+                
+                ImGui::PopStyleVar();
+                
+               // ImGui::ShowDemoWindow();
             /*
             {
                 glm::mat4 model = glm::translate(glm::mat4(1.0f), translationB);
