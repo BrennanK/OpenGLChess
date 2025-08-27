@@ -189,6 +189,9 @@ int main(void)
                
                 ImGui::PushStyleVar(ImGuiStyleVar_ItemSpacing, ImVec2(0.0f, 25.0f)); // 10px horizontal, 5px vertical
                 // Your widgets here
+
+                ImGui::Text("FPS: %.1f", ImGui::GetIO().Framerate);
+
                 test.onRenderer();
                 test.OnImGuiRenderer();
                
