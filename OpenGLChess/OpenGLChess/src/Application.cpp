@@ -15,6 +15,7 @@
 #include "Tests/TestClearColor.h"
 #include "Tests/TestScaleTexture.h"
 #include "Tests/TextureTest.h"
+#include "RenderLib.cpp"
 #pragma region Docs
 // Really Good Documentation Website for OpenGL
 //https://docs.gl/
@@ -23,7 +24,7 @@
 int main(void)
 {
     GLFWwindow* window;
-
+    fnRenderLib();
     /* Initialize the library */
     if (!glfwInit())
         return -1;

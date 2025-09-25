@@ -1,5 +1,5 @@
 #include "TextureTest.h"
-#include "../Texture.h"
+#include "Texture.h"
 #include <imgui/imgui.h>
 #include <imgui/imgui_stdlib.h>
 #include <iostream>

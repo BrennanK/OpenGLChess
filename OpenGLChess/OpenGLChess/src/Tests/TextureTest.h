@@ -1,7 +1,7 @@
 #pragma once
 #include "Test.h"
 #include <string>
-#include "../Texture.h"
+#include "Texture.h"
 #include <vector>
 namespace test
 {

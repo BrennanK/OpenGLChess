@@ -1,5 +1,5 @@
 #include "TestScaleTexture.h"
-#include "../Renderer.h"
+#include "Renderer.h"
 #include <imgui/imgui.h>
 namespace test
 {

@@ -1,10 +1,10 @@
 #pragma once
 #include "Test.h"
-#include "../VertexArray.h"
-#include "../IndexBuffer.h"
-#include "../Shader.h"
-#include "../Renderer.h"
-#include "../VertexBufferLayout.h"
+#include "VertexArray.h"
+#include "IndexBuffer.h"
+#include "Shader.h"
+#include "Renderer.h"
+#include "VertexBufferLayout.h"
 #include "glm/glm.hpp"
 #include "glm/gtc/matrix_transform.hpp"
 
