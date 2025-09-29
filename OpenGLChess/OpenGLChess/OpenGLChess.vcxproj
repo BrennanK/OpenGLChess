@@ -156,6 +156,7 @@
     <None Include="res\shaders\Basic.shader" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="resource.h" />
     <ClInclude Include="src\Tests\Test.h" />
     <ClInclude Include="src\Tests\TestClearColor.h" />
     <ClInclude Include="src\vendor\imgui\imconfig.h" />
@@ -209,11 +210,16 @@
     <Image Include="res\textures\return 2.jpg" />
     <Image Include="res\textures\return to origin.jpg" />
     <Image Include="res\textures\returning to origin.jpg" />
+    <Image Include="res\WindowIcon\Gold Pawn 256 x 256.ico" />
+    <Image Include="res\WindowIcon\Gold Pawn.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\RenderLib\RenderLib.vcxproj">
       <Project>{d697baf1-3625-409d-9e44-c7d512f02912}</Project>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="OpenGLChess.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

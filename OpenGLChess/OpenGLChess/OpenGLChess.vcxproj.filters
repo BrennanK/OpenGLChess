@@ -101,6 +101,9 @@
     <ClInclude Include="src\vendor\imgui\imgui_stdlib.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\textures\kh3_box_art.jpg">
@@ -214,5 +217,16 @@
     <Image Include="res\textures\returning to origin.jpg">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="res\WindowIcon\Gold Pawn 256 x 256.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\WindowIcon\Gold Pawn.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="OpenGLChess.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
   </ItemGroup>
 </Project>

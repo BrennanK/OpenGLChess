@@ -16,6 +16,7 @@
 #include "Tests/TestScaleTexture.h"
 #include "Tests/TextureTest.h"
 #include "RenderLib.cpp"
+#include <stb_image/stb_image.h>
 #pragma region Docs
 // Really Good Documentation Website for OpenGL
 //https://docs.gl/
@@ -24,7 +25,8 @@
 int main(void)
 {
     GLFWwindow* window;
-    fnRenderLib();
+   
+
     /* Initialize the library */
     if (!glfwInit())
         return -1;
@@ -39,6 +41,16 @@ int main(void)
         glfwTerminate();
         return -1;
     }
+
+    GLFWimage windowImage;
+    windowImage.pixels = stbi_load("res/WindowIcon/Gold Pawn.png", &windowImage.width, &windowImage.height, 0, 4);
+    glfwSetWindowIcon(window, 1, &windowImage);
+    if (windowImage.pixels)
+    {
+        std::cout << "We have an icon image" << std::endl;
+    }
+
+    stbi_image_free(windowImage.pixels);
 
     /* Make the window's context current */
     glfwMakeContextCurrent(window);

@@ -55,5 +55,10 @@ void Texture::changeTexture(std::string& filePath)
 		GLCall(glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA8, m_Width, m_Height, 0, GL_RGBA, GL_UNSIGNED_BYTE, m_LocalBuffer));
 		m_FilePath = filePath;
 		Bind();
+
+		if (m_LocalBuffer)
+		{
+			stbi_image_free(m_LocalBuffer);
+		}
 	}
 }
