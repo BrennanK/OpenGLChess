@@ -17,6 +17,7 @@
 #include "Tests/TextureTest.h"
 #include "RenderLib.cpp"
 #include <stb_image/stb_image.h>
+#include <wtypes.h>
 #pragma region Docs
 // Really Good Documentation Website for OpenGL
 //https://docs.gl/
@@ -35,7 +36,11 @@ int main(void)
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
     /* Create a windowed mode window and its OpenGL context */
-    window = glfwCreateWindow(640*2, 720, "Chess", NULL, NULL);
+    RECT desktop;
+    HWND hDesktop=GetDesktopWindow();
+    GetWindowRect(hDesktop, &desktop);
+
+    window = glfwCreateWindow(desktop.right, desktop.bottom, "Chess", NULL, NULL);
     if (!window)
     {
         glfwTerminate();
@@ -119,7 +124,7 @@ int main(void)
 #pragma endregion Used to indicate Triangles without duplicating vertices
 
 #pragma region Projection_Matrix
-        glm::mat4 proj = glm::ortho(0.0f, 1280.0f, 0.0f, 720.0f, -1.0f, 1.0f);
+        glm::mat4 proj = glm::ortho(0.0f, (float)desktop.right, 0.0f, (float)desktop.bottom, -1.0f, 1.0f);
         glm::mat4 view=glm::translate(glm::mat4(1.0f), glm::vec3(0, 0, 0));
 
         glm::vec3 translationA = glm::vec3(200, 200, 0);
