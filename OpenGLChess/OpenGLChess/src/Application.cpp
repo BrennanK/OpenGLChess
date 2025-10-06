@@ -23,9 +23,15 @@
 //https://docs.gl/
 #pragma endregion
 
+void framebuffer_size_callback(GLFWwindow* window, int width, int height)
+{
+    glViewport(0, 0, width, height);
+}
+
+GLFWwindow* window;
 int main(void)
 {
-    GLFWwindow* window;
+    //GLFWwindow* window;
    
 
     /* Initialize the library */
@@ -46,7 +52,7 @@ int main(void)
         glfwTerminate();
         return -1;
     }
-
+    glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
     GLFWimage windowImage;
     windowImage.pixels = stbi_load("res/WindowIcon/Gold Pawn.png", &windowImage.width, &windowImage.height, 0, 4);
     glfwSetWindowIcon(window, 1, &windowImage);
@@ -223,47 +229,21 @@ int main(void)
                 ImGui::PopStyleVar();
                 
                // ImGui::ShowDemoWindow();
-            /*
-            {
-                glm::mat4 model = glm::translate(glm::mat4(1.0f), translationB);
-                glm::mat4 mvp = proj * view * model;
-                so.SetUniformMat4f("u_MVP", mvp);
-                renderer.Draw(va, ib, so);
-            }
-           
 
-            // Post draw
-            static float f = 0.0f;
-            static int counter = 0;
+             // Begin a window with the ImGuiWindowFlags_AlwaysAutoResize flag
+                ImGui::Begin("Auto-Resizing Window", nullptr, ImGuiWindowFlags_AlwaysAutoResize);
 
-            if (show_demo_window)
-                ImGui::ShowDemoWindow(&show_demo_window);
+                // Add content to the window
+                ImGui::Text("This window automatically resizes to fit its content.");
+                //ImGui::SliderFloat("Float Value", &myFloat, 0.0f, 1.0f);
+                if (ImGui::Button("Click Me"))
+                {
+                    // Do something
+                }
 
-            // 2. Show a simple window that we create ourselves. We use a Begin/End pair to created a named window.
-            {
-                static float f = 0.0f;
-                static int counter = 0;
-
-                ImGui::Begin("Hello, world!");                          // Create a window called "Hello, world!" and append into it.
-
-                ImGui::Checkbox("Demo Window", &show_demo_window);      // Edit bools storing our window open/close state
-                ImGui::Checkbox("Another Window", &show_another_window);
-
-                ImGui::SliderFloat3("Translation", &translationA.x, 0.0f, 1280.0f);            // Edit 1 float using a slider from 0.0f to 1.0f
-                ImGui::SliderFloat3("Translation2", &translationB.x, 0.0f, 1280.0f);
-
-                ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
-
-               // model = glm::translate(glm::mat4(1.0f), translationA);
-
-              //  mvp = proj * view * model;
-               // so.SetUniformMat4f("u_MVP", mvp);
-
+                // End the window
                 ImGui::End();
-            }
-
-            
-            */
+           
             ImGui::Render();
             ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
            
