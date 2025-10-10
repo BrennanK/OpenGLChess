@@ -3,8 +3,16 @@
   "WorkspaceRootPath": "C:\\Portfolio folder\\OpenGLChess\\OpenGLChess\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{7F9CE7EB-E49B-4526-9033-F95953F0152D}|OpenGLChess\\OpenGLChess.vcxproj|C:\\Portfolio folder\\OpenGLChess\\OpenGLChess\\OpenGLChess\\src\\Tests\\TestClearColor.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{7F9CE7EB-E49B-4526-9033-F95953F0152D}|OpenGLChess\\OpenGLChess.vcxproj|solutionrelative:OpenGLChess\\src\\Tests\\TestClearColor.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{7F9CE7EB-E49B-4526-9033-F95953F0152D}|OpenGLChess\\OpenGLChess.vcxproj|C:\\Portfolio folder\\OpenGLChess\\OpenGLChess\\OpenGLChess\\src\\Application.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{7F9CE7EB-E49B-4526-9033-F95953F0152D}|OpenGLChess\\OpenGLChess.vcxproj|solutionrelative:OpenGLChess\\src\\Application.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7F9CE7EB-E49B-4526-9033-F95953F0152D}|OpenGLChess\\OpenGLChess.vcxproj|C:\\Portfolio folder\\OpenGLChess\\OpenGLChess\\OpenGLChess\\src\\Tests\\TestClearColor.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{7F9CE7EB-E49B-4526-9033-F95953F0152D}|OpenGLChess\\OpenGLChess.vcxproj|solutionrelative:OpenGLChess\\src\\Tests\\TestClearColor.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{7F9CE7EB-E49B-4526-9033-F95953F0152D}|OpenGLChess\\OpenGLChess.vcxproj|C:\\Portfolio folder\\OpenGLChess\\OpenGLChess\\OpenGLChess\\src\\Tests\\TextureTest.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
@@ -34,11 +42,37 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
+              "Title": "TestClearColor.h",
+              "DocumentMoniker": "C:\\Portfolio folder\\OpenGLChess\\OpenGLChess\\OpenGLChess\\src\\Tests\\TestClearColor.h",
+              "RelativeDocumentMoniker": "OpenGLChess\\src\\Tests\\TestClearColor.h",
+              "ToolTip": "C:\\Portfolio folder\\OpenGLChess\\OpenGLChess\\OpenGLChess\\src\\Tests\\TestClearColor.h",
+              "RelativeToolTip": "OpenGLChess\\src\\Tests\\TestClearColor.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-10-08T15:29:26.77Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "TestClearColor.cpp",
+              "DocumentMoniker": "C:\\Portfolio folder\\OpenGLChess\\OpenGLChess\\OpenGLChess\\src\\Tests\\TestClearColor.cpp",
+              "RelativeDocumentMoniker": "OpenGLChess\\src\\Tests\\TestClearColor.cpp",
+              "ToolTip": "C:\\Portfolio folder\\OpenGLChess\\OpenGLChess\\OpenGLChess\\src\\Tests\\TestClearColor.cpp",
+              "RelativeToolTip": "OpenGLChess\\src\\Tests\\TestClearColor.cpp",
+              "ViewState": "AgIAAAoAAAAAAAAAAAAAwB8AAAAeAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-10-08T15:27:12.852Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "TextureTest.cpp",
               "DocumentMoniker": "C:\\Portfolio folder\\OpenGLChess\\OpenGLChess\\OpenGLChess\\src\\Tests\\TextureTest.cpp",
               "RelativeDocumentMoniker": "OpenGLChess\\src\\Tests\\TextureTest.cpp",
@@ -46,12 +80,11 @@
               "RelativeToolTip": "OpenGLChess\\src\\Tests\\TextureTest.cpp",
               "ViewState": "AgIAAAUAAAAAAAAAAAAiwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-10-06T15:39:45.718Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-06T15:39:45.718Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 4,
               "Title": "Texture.cpp",
               "DocumentMoniker": "C:\\Portfolio folder\\OpenGLChess\\OpenGLChess\\RenderLib\\Texture.cpp",
               "RelativeDocumentMoniker": "RenderLib\\Texture.cpp",
@@ -63,7 +96,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 5,
               "Title": "Texture.h",
               "DocumentMoniker": "C:\\Portfolio folder\\OpenGLChess\\OpenGLChess\\RenderLib\\Texture.h",
               "RelativeDocumentMoniker": "RenderLib\\Texture.h",
@@ -75,7 +108,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 6,
               "Title": "Shader.h",
               "DocumentMoniker": "C:\\Portfolio folder\\OpenGLChess\\OpenGLChess\\RenderLib\\Shader.h",
               "RelativeDocumentMoniker": "RenderLib\\Shader.h",
@@ -87,7 +120,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 7,
               "Title": "Shader.cpp",
               "DocumentMoniker": "C:\\Portfolio folder\\OpenGLChess\\OpenGLChess\\RenderLib\\Shader.cpp",
               "RelativeDocumentMoniker": "RenderLib\\Shader.cpp",
@@ -99,13 +132,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "Application.cpp",
               "DocumentMoniker": "C:\\Portfolio folder\\OpenGLChess\\OpenGLChess\\OpenGLChess\\src\\Application.cpp",
               "RelativeDocumentMoniker": "OpenGLChess\\src\\Application.cpp",
               "ToolTip": "C:\\Portfolio folder\\OpenGLChess\\OpenGLChess\\OpenGLChess\\src\\Application.cpp",
               "RelativeToolTip": "OpenGLChess\\src\\Application.cpp",
-              "ViewState": "AgIAAMYAAAAAAAAAAAAswO0AAAASAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAANkAAAAcAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-06-23T17:13:55.216Z",
               "EditorCaption": ""

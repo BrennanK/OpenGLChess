@@ -15,5 +15,6 @@ namespace test // Remeber to override from a class inside a namespace we have to
 
 	private:
 		float m_Color[4];
+		float m_Color_cache[4];
 	};
 }

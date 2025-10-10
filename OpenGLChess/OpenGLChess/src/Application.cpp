@@ -159,8 +159,7 @@ int main(void)
 
         Renderer renderer;
 
-        float r = 0.0f;
-        float increment = 0.05f;
+       
 #pragma region ImGui
         //initialization (after renderer )
         IMGUI_CHECKVERSION();
@@ -170,9 +169,9 @@ int main(void)
         ImGui_ImplOpenGL3_Init((char*)glGetString(330));
 
         // set up values
-            bool show_demo_window = true;
+            bool show_demo_window = false;
         bool show_another_window = false;
-        ImVec4 clear_color = ImVec4(0.45f, 0.55f, 0.60f, 1.00f);
+       // ImVec4 clear_color = ImVec4(0.45f, 0.55f, 0.60f, 1.00f);
 
        
        
@@ -184,7 +183,7 @@ int main(void)
 
         test::TestClearColor test;
       //  test::TestScaleTexture scaleTest;
-        test::TextureTest texTest;
+       // test::TextureTest texTest;
         
         /* Loop until the user closes the window */
         while (!glfwWindowShouldClose(window))
@@ -224,7 +223,7 @@ int main(void)
                 scaleTest.OnImGuiRenderer();
                 
                 ImGui::SliderFloat3("Translation", &translationA.x, 0.0f, 1280.0f);
-                texTest.OnImGuiRenderer(texture);
+               // texTest.OnImGuiRenderer(texture);
                 renderer.Draw(va2, ib, so);
                 ImGui::PopStyleVar();
                 
