@@ -1,6 +1,7 @@
 #include "pch.h"
 #include "VertexBuffer.h"
 #include "Renderer.h"
+
 VertexBuffer::VertexBuffer(const void* data, unsigned int size)
 {
     glGenBuffers(1, &m_RendererID); // Creates the buffer and assigns the value to a varaible, this number is used to reference an object as an ID

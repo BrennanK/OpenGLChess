@@ -18,6 +18,7 @@
 #include "RenderLib.cpp"
 #include <stb_image/stb_image.h>
 #include <wtypes.h>
+#include "TextureObject.h"
 #pragma region Docs
 // Really Good Documentation Website for OpenGL
 //https://docs.gl/
@@ -110,6 +111,9 @@ int main(void)
         layout2.Push<float>(2);
         //scaleTest.OnUpdate(0.0f, vao, &va2, &vb2, layout2, positions, 16);
         va2.AddBuffer(vb2, layout2);
+
+        TextureObject piece;
+
         //glBufferData(GL_ARRAY_BUFFER, 4 * 4 * sizeof(float), nullptr, GL_STREAM_DRAW);
         //glBufferSubData(GL_ARRAY_BUFFER, 0, 4 * 4 * sizeof(float), positions2);
         //scaleTest.OnUpdate(0.0f, vao, &va2, &vb2, layout2, positions, 16);
@@ -134,6 +138,7 @@ int main(void)
         glm::mat4 view=glm::translate(glm::mat4(1.0f), glm::vec3(0, 0, 0));
 
         glm::vec3 translationA = glm::vec3(200, 200, 0);
+        glm::vec3 translationB = glm::vec3(500, 500, 0);
         glm::vec3 scaleTranslation = glm::vec3(0, 0, 0);
         
 #pragma endregion
@@ -224,7 +229,10 @@ int main(void)
                 
                 ImGui::SliderFloat3("Translation", &translationA.x, 0.0f, 1280.0f);
                // texTest.OnImGuiRenderer(texture);
+               
                 renderer.Draw(va2, ib, so);
+                renderer.Draw(piece.returnVa(), piece.returnIb(), piece.returnSo());
+               
                 ImGui::PopStyleVar();
                 
                // ImGui::ShowDemoWindow();
