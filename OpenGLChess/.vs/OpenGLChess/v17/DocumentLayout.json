@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "C:\\OpenGLChess\\OpenGLChess\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{D697BAF1-3625-409D-9E44-C7D512F02912}|RenderLib\\RenderLib.vcxproj|C:\\OpenGLChess\\OpenGLChess\\RenderLib\\RenderTransform.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{D697BAF1-3625-409D-9E44-C7D512F02912}|RenderLib\\RenderLib.vcxproj|solutionrelative:RenderLib\\RenderTransform.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{7F9CE7EB-E49B-4526-9033-F95953F0152D}|OpenGLChess\\OpenGLChess.vcxproj|C:\\OpenGLChess\\OpenGLChess\\OpenGLChess\\src\\Application.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{7F9CE7EB-E49B-4526-9033-F95953F0152D}|OpenGLChess\\OpenGLChess.vcxproj|solutionrelative:OpenGLChess\\src\\Application.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
@@ -15,24 +19,8 @@
       "RelativeMoniker": "D:0:0:{D697BAF1-3625-409D-9E44-C7D512F02912}|RenderLib\\RenderLib.vcxproj|solutionrelative:RenderLib\\TextureObject.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7F9CE7EB-E49B-4526-9033-F95953F0152D}|OpenGLChess\\OpenGLChess.vcxproj|C:\\OpenGLChess\\OpenGLChess\\OpenGLChess\\res\\shaders\\Basic.shader||{3B902123-F8A7-4915-9F01-361F908088D0}",
-      "RelativeMoniker": "D:0:0:{7F9CE7EB-E49B-4526-9033-F95953F0152D}|OpenGLChess\\OpenGLChess.vcxproj|solutionrelative:OpenGLChess\\res\\shaders\\Basic.shader||{3B902123-F8A7-4915-9F01-361F908088D0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D697BAF1-3625-409D-9E44-C7D512F02912}|RenderLib\\RenderLib.vcxproj|C:\\OpenGLChess\\OpenGLChess\\RenderLib\\Texture.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{D697BAF1-3625-409D-9E44-C7D512F02912}|RenderLib\\RenderLib.vcxproj|solutionrelative:RenderLib\\Texture.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D697BAF1-3625-409D-9E44-C7D512F02912}|RenderLib\\RenderLib.vcxproj|C:\\OpenGLChess\\OpenGLChess\\RenderLib\\Texture.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{D697BAF1-3625-409D-9E44-C7D512F02912}|RenderLib\\RenderLib.vcxproj|solutionrelative:RenderLib\\Texture.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D697BAF1-3625-409D-9E44-C7D512F02912}|RenderLib\\RenderLib.vcxproj|C:\\OpenGLChess\\OpenGLChess\\RenderLib\\Shader.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{D697BAF1-3625-409D-9E44-C7D512F02912}|RenderLib\\RenderLib.vcxproj|solutionrelative:RenderLib\\Shader.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D697BAF1-3625-409D-9E44-C7D512F02912}|RenderLib\\RenderLib.vcxproj|C:\\OpenGLChess\\OpenGLChess\\RenderLib\\Shader.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{D697BAF1-3625-409D-9E44-C7D512F02912}|RenderLib\\RenderLib.vcxproj|solutionrelative:RenderLib\\Shader.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{D697BAF1-3625-409D-9E44-C7D512F02912}|RenderLib\\RenderLib.vcxproj|C:\\OpenGLChess\\OpenGLChess\\RenderLib\\RenderTransform.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{D697BAF1-3625-409D-9E44-C7D512F02912}|RenderLib\\RenderLib.vcxproj|solutionrelative:RenderLib\\RenderTransform.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{D697BAF1-3625-409D-9E44-C7D512F02912}|RenderLib\\RenderLib.vcxproj|C:\\OpenGLChess\\OpenGLChess\\RenderLib\\pch.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
@@ -46,50 +34,37 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 8,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Basic.shader",
-              "DocumentMoniker": "C:\\OpenGLChess\\OpenGLChess\\OpenGLChess\\res\\shaders\\Basic.shader",
-              "RelativeDocumentMoniker": "OpenGLChess\\res\\shaders\\Basic.shader",
-              "ToolTip": "C:\\OpenGLChess\\OpenGLChess\\OpenGLChess\\res\\shaders\\Basic.shader",
-              "RelativeToolTip": "OpenGLChess\\res\\shaders\\Basic.shader",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002777|",
-              "WhenOpened": "2025-10-27T18:25:38.031Z",
+              "DocumentIndex": 4,
+              "Title": "RenderTransform.h",
+              "DocumentMoniker": "C:\\OpenGLChess\\OpenGLChess\\RenderLib\\RenderTransform.h",
+              "RelativeDocumentMoniker": "RenderLib\\RenderTransform.h",
+              "ToolTip": "C:\\OpenGLChess\\OpenGLChess\\RenderLib\\RenderTransform.h",
+              "RelativeToolTip": "RenderLib\\RenderTransform.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAnAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-10-29T17:40:44.411Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "RenderTransform.cpp",
+              "DocumentMoniker": "C:\\OpenGLChess\\OpenGLChess\\RenderLib\\RenderTransform.cpp",
+              "RelativeDocumentMoniker": "RenderLib\\RenderTransform.cpp",
+              "ToolTip": "C:\\OpenGLChess\\OpenGLChess\\RenderLib\\RenderTransform.cpp",
+              "RelativeToolTip": "RenderLib\\RenderTransform.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAABNAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-10-29T17:40:20.118Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 5,
-              "Title": "Texture.h",
-              "DocumentMoniker": "C:\\OpenGLChess\\OpenGLChess\\RenderLib\\Texture.h",
-              "RelativeDocumentMoniker": "RenderLib\\Texture.h",
-              "ToolTip": "C:\\OpenGLChess\\OpenGLChess\\RenderLib\\Texture.h",
-              "RelativeToolTip": "RenderLib\\Texture.h",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-10-27T18:05:36.909Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Texture.cpp",
-              "DocumentMoniker": "C:\\OpenGLChess\\OpenGLChess\\RenderLib\\Texture.cpp",
-              "RelativeDocumentMoniker": "RenderLib\\Texture.cpp",
-              "ToolTip": "C:\\OpenGLChess\\OpenGLChess\\RenderLib\\Texture.cpp",
-              "RelativeToolTip": "RenderLib\\Texture.cpp",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAApAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-10-27T18:05:35.676Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
               "Title": "pch.h",
               "DocumentMoniker": "C:\\OpenGLChess\\OpenGLChess\\RenderLib\\pch.h",
               "RelativeDocumentMoniker": "RenderLib\\pch.h",
@@ -102,65 +77,39 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "Shader.cpp",
-              "DocumentMoniker": "C:\\OpenGLChess\\OpenGLChess\\RenderLib\\Shader.cpp",
-              "RelativeDocumentMoniker": "RenderLib\\Shader.cpp",
-              "ToolTip": "C:\\OpenGLChess\\OpenGLChess\\RenderLib\\Shader.cpp",
-              "RelativeToolTip": "RenderLib\\Shader.cpp",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-10-27T17:45:10.441Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "Shader.h",
-              "DocumentMoniker": "C:\\OpenGLChess\\OpenGLChess\\RenderLib\\Shader.h",
-              "RelativeDocumentMoniker": "RenderLib\\Shader.h",
-              "ToolTip": "C:\\OpenGLChess\\OpenGLChess\\RenderLib\\Shader.h",
-              "RelativeToolTip": "RenderLib\\Shader.h",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACYAAAAqAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-10-27T17:45:09.551Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "TextureObject.h",
               "DocumentMoniker": "C:\\OpenGLChess\\OpenGLChess\\RenderLib\\TextureObject.h",
               "RelativeDocumentMoniker": "RenderLib\\TextureObject.h",
               "ToolTip": "C:\\OpenGLChess\\OpenGLChess\\RenderLib\\TextureObject.h",
               "RelativeToolTip": "RenderLib\\TextureObject.h",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAYAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABoAAAAUAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2025-10-27T17:14:44.597Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "TextureObject.cpp",
               "DocumentMoniker": "C:\\OpenGLChess\\OpenGLChess\\RenderLib\\TextureObject.cpp",
               "RelativeDocumentMoniker": "RenderLib\\TextureObject.cpp",
               "ToolTip": "C:\\OpenGLChess\\OpenGLChess\\RenderLib\\TextureObject.cpp",
               "RelativeToolTip": "RenderLib\\TextureObject.cpp",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAlAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAuAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-10-27T17:14:03.07Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "Application.cpp",
               "DocumentMoniker": "C:\\OpenGLChess\\OpenGLChess\\OpenGLChess\\src\\Application.cpp",
               "RelativeDocumentMoniker": "OpenGLChess\\src\\Application.cpp",
               "ToolTip": "C:\\OpenGLChess\\OpenGLChess\\OpenGLChess\\src\\Application.cpp",
               "RelativeToolTip": "OpenGLChess\\src\\Application.cpp",
-              "ViewState": "AgIAANAAAAAAAAAAAAAwwOgAAAAQAAAAAAAAAA==",
+              "ViewState": "AgIAAG8AAAAAAAAAAAAAAC8AAAAmAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-06-23T17:13:55.216Z",
               "EditorCaption": ""

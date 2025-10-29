@@ -4,6 +4,7 @@
 #include "IndexBuffer.h"
 #include "Shader.h"
 #include "Texture.h"
+#include "RenderTransform.h"
 class TextureObject
 {
 private:
@@ -23,7 +24,7 @@ private:
 	IndexBuffer ib = IndexBuffer(indices, 6);
 	Shader so = Shader("../OpenGLChess/res/shaders/Basic.shader");
 	Texture texture=Texture("../OpenGLChess/res/textures/kh3_box_art.jpg");
-
+	RenderTransform rt;
 
 public:
 	TextureObject();
