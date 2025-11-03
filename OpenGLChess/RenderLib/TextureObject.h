@@ -31,4 +31,7 @@ public:
 	VertexArray& returnVa() { return va; }
 	IndexBuffer& returnIb() { return ib; }
 	Shader& returnSo() { return so; }
+	RenderTransform returnTransform() { return rt; }
+
+	void updateTransform(glm::vec3 newTranslation);
 };

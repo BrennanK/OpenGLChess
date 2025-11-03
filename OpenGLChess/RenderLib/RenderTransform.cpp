@@ -12,3 +12,10 @@ RenderTransform::RenderTransform()
     model = glm::translate(glm::mat4(1.0f), translation);
     mvp = proj * view * model;
 }
+
+void RenderTransform::UpdateTranslation(glm::vec3 newTranslation)
+{
+    translation = newTranslation;
+    model = glm::translate(glm::mat4(1.0f), translation);
+    mvp = proj * view * model;
+}

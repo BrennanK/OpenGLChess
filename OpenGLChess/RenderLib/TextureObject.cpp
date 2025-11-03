@@ -15,3 +15,10 @@ TextureObject::TextureObject()
     so.SetUniform1i("u_Texture", 0);
     so.SetUniformMat4f("u_MVP", rt.returnMVP());
 }
+
+void TextureObject::updateTransform(glm::vec3 newTranslation)
+{
+    rt.UpdateTranslation(newTranslation);
+    so.Bind();
+    so.SetUniformMat4f("u_MVP", rt.returnMVP());
+}

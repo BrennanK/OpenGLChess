@@ -19,6 +19,7 @@
 #include <stb_image/stb_image.h>
 #include <wtypes.h>
 #include "TextureObject.h"
+#include "Tests/TransformTest.h"
 #pragma region Docs
 // Really Good Documentation Website for OpenGL
 //https://docs.gl/
@@ -100,23 +101,11 @@ int main(void)
         unsigned int vao;
         GLCall(glGenVertexArrays(1, &vao));
         GLCall(glBindVertexArray(vao));
-       // positions[8] = 150.0f; positions[9] = 150.0f;
        
-        
-        test::TestScaleTexture scaleTest(positions,16);
-        VertexArray va2;
-        VertexBuffer vb2(positions, 4 * 4 * sizeof(float));
-        VertexBufferLayout layout2;
-        layout2.Push<float>(2);
-        layout2.Push<float>(2);
-        //scaleTest.OnUpdate(0.0f, vao, &va2, &vb2, layout2, positions, 16);
-        va2.AddBuffer(vb2, layout2);
 
         TextureObject piece;
 
-        //glBufferData(GL_ARRAY_BUFFER, 4 * 4 * sizeof(float), nullptr, GL_STREAM_DRAW);
-        //glBufferSubData(GL_ARRAY_BUFFER, 0, 4 * 4 * sizeof(float), positions2);
-        //scaleTest.OnUpdate(0.0f, vao, &va2, &vb2, layout2, positions, 16);
+       
 
 #pragma endregion Creates a section of data for our shape data and binds that data to a GPU buffer 
 
@@ -130,36 +119,24 @@ int main(void)
 
 #pragma region Index_Buffer
 
-        IndexBuffer ib(indices, 6);
+      
 #pragma endregion Used to indicate Triangles without duplicating vertices
 
 #pragma region Projection_Matrix
-        glm::mat4 proj = glm::ortho(0.0f, (float)desktop.right, 0.0f, (float)desktop.bottom, -1.0f, 1.0f);
-        glm::mat4 view=glm::translate(glm::mat4(1.0f), glm::vec3(0, 0, 0));
-
-        glm::vec3 translationA = glm::vec3(200, 200, 0);
-        glm::vec3 translationB = glm::vec3(500, 500, 0);
-        glm::vec3 scaleTranslation = glm::vec3(0, 0, 0);
+       
         
 #pragma endregion
 
 #pragma region Shader
 
-        Shader so("res/shaders/Basic.shader");
-        so.Bind();// We must bind before setting the uniform
-        so.SetUniform4f("u_Color",0.8f, 0.3f, 0.8f, 1.0f);
         
        
 #pragma endregion Responsible for Passing programs to the GPU for utilizing GPU resources
       
 #pragma region Texture
-        Texture texture("res/textures/kh3_box_art.jpg");
-        texture.Bind();
-        so.Bind();
-        so.SetUniform1i("u_Texture", 0);
+       
 #pragma endregion
-       // va.Unbind();
-       // vb.Unbind();
+      
         
 
         Renderer renderer;
@@ -185,8 +162,9 @@ int main(void)
 #pragma endregion
 
 #pragma endregion
-
+        
         test::TestClearColor test;
+        test::TransformTest tf(&piece);
       //  test::TestScaleTexture scaleTest;
        // test::TextureTest texTest;
         
@@ -204,16 +182,8 @@ int main(void)
 
            
             
-            //so.Bind();
-            //va.Bind();
-            //ib.Bind();
-            so.Bind();
+           
             
-                glm::mat4 model = glm::translate(glm::mat4(1.0f), translationA);
-                glm::mat4 mvp = proj * view * model;
-                so.SetUniformMat4f("u_MVP", mvp);
-               // renderer.Draw(va2, ib, so);
-                // test.OnUpdate(0.0f);
                
                 ImGui::PushStyleVar(ImGuiStyleVar_ItemSpacing, ImVec2(0.0f, 25.0f)); // 10px horizontal, 5px vertical
                 // Your widgets here
@@ -222,17 +192,14 @@ int main(void)
 
                 test.onRenderer();
                 test.OnImGuiRenderer();
-               
-                scaleTest.OnUpdate(0.0f, positions, 16);
-              // scaleTest.onRenderer(renderer, va2, ib, so);
-                scaleTest.OnImGuiRenderer();
                 
-                ImGui::SliderFloat3("Translation", &translationA.x, 0.0f, 1280.0f);
+               // ImGui::SliderFloat3("Translation", &translationA.x, 0.0f, 1280.0f);
                // texTest.OnImGuiRenderer(texture);
                
-                renderer.Draw(va2, ib, so);
-                renderer.Draw(piece.returnVa(), piece.returnIb(), piece.returnSo());
                
+                renderer.Draw(piece.returnVa(), piece.returnIb(), piece.returnSo());
+                tf.OnImGuiRenderer();
+                tf.OnUpdate(0.0f);
                 ImGui::PopStyleVar();
                 
                // ImGui::ShowDemoWindow();

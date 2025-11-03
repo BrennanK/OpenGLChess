@@ -17,4 +17,7 @@ public:
     RenderTransform();
 
     glm::mat4 returnMVP() { return mvp; }
+    glm::vec3 returnTranslation() { return translation; }
+
+    void UpdateTranslation(glm::vec3 newTranslation);
 };
