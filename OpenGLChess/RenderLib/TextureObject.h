@@ -23,7 +23,7 @@ private:
 	VertexBufferLayout layout;
 	IndexBuffer ib = IndexBuffer(indices, 6);
 	Shader so = Shader("../OpenGLChess/res/shaders/Basic.shader");
-	Texture texture=Texture("../OpenGLChess/res/textures/kh3_box_art.jpg");
+	Texture texture= Texture("../OpenGLChess/res/textures/kh3_box_art.jpg");
 	RenderTransform rt;
 
 public:
@@ -34,4 +34,5 @@ public:
 	RenderTransform returnTransform() { return rt; }
 
 	void updateTransform(glm::vec3 newTranslation);
+	void updateTexture(std::string& filePath,unsigned int slot);
 };

@@ -483,6 +483,9 @@
     <ClInclude Include="RenderTransform.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="TextureObject2.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="RenderLib.cpp">
@@ -519,6 +522,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="RenderTransform.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TextureObject2cpp.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

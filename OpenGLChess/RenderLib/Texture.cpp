@@ -44,7 +44,7 @@ void Texture::Unbind()
 	GLCall(glBindTexture(GL_TEXTURE_2D, 0));
 }
 
-void Texture::changeTexture(std::string& filePath)
+void Texture::changeTexture(std::string& filePath, unsigned int slot)
 {
 	
 	if (filePath.compare(m_FilePath) != 0)
@@ -58,7 +58,7 @@ void Texture::changeTexture(std::string& filePath)
 
 		GLCall(glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA8, m_Width, m_Height, 0, GL_RGBA, GL_UNSIGNED_BYTE, m_LocalBuffer));
 		m_FilePath = filePath;
-		Bind();
+		Bind(slot);
 
 		if (m_LocalBuffer)
 		{

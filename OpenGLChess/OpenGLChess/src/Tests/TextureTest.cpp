@@ -56,7 +56,7 @@ namespace test
 				m_FilePath = "res/textures/";
 				m_FilePath.append(m_FileName);
 				
-				texture.changeTexture(m_FilePath);
+				texture.changeTexture(m_FilePath,0);
 			}
 			break;
 
@@ -67,7 +67,7 @@ namespace test
 			m_FileName = m_filenames[m_currentItem];
 			m_FilePath.append(m_FileName);
 
-			texture.changeTexture(m_FilePath);
+			texture.changeTexture(m_FilePath,0);
 			break;
 		
 		default:

@@ -60,6 +60,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="res\shaders\Basic.shader" />
+    <None Include="res\shaders\Basic2.shader" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\vendor\imgui\imconfig.h">
@@ -227,6 +228,9 @@
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="res\WindowIcon\Gold Pawn.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\textures\newbuttonpressed.png">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>

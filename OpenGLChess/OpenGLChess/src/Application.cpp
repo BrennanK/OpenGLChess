@@ -19,6 +19,7 @@
 #include <stb_image/stb_image.h>
 #include <wtypes.h>
 #include "TextureObject.h"
+#include "TextureObject2.h"
 #include "Tests/TransformTest.h"
 #pragma region Docs
 // Really Good Documentation Website for OpenGL
@@ -104,7 +105,11 @@ int main(void)
        
 
         TextureObject piece;
+        TextureObject2 piece2;
+        piece2.updateTransform(glm::vec3(1200, 600, 0));
 
+        //std::string fPath = "../OpenGLChess/res/textures/newbuttonpressed.png";
+       // piece2.updateTexture(fPath,1);
        
 
 #pragma endregion Creates a section of data for our shape data and binds that data to a GPU buffer 
@@ -165,6 +170,63 @@ int main(void)
         
         test::TestClearColor test;
         test::TransformTest tf(&piece);
+ /*
+        float m_vertexPositions[16]{
+            -150.0f,-150.0f, 0.0f,0.0f,//0
+            150.0f,-150.0f, 1.0f, 0.0f, //1
+            150.0f,150.0f,  1.0f,1.0f, //2
+            -150.0f,150.0f, 0.0f,1.0f };
+       
+        VertexArray va;
+        VertexBuffer vb = VertexBuffer(m_vertexPositions, 4 * 4 * sizeof(float));
+        VertexBufferLayout layout;
+        IndexBuffer ib = IndexBuffer(indices, 6);
+        Shader so = Shader("../OpenGLChess/res/shaders/Basic.shader");
+        Texture texture = Texture("../OpenGLChess/res/textures/kh3_box_art.jpg");
+
+        layout.Push<float>(2);
+        layout.Push<float>(2);
+        va.AddBuffer(vb, layout);
+
+
+        texture.Bind();
+        so.Bind();
+        so.SetUniform1i("u_Texture", 0);
+
+        glm::mat4 proj = glm::ortho(0.0f, (float)desktop.right, 0.0f, (float)desktop.bottom, -1.0f, 1.0f);
+        glm::mat4 view = glm::translate(glm::mat4(1.0f), glm::vec3(0, 0, 0));
+
+       glm::vec3 translation = glm::vec3(600, 600, 0);
+       glm::mat4 model = glm::translate(glm::mat4(1.0f), translation);
+       glm::mat4 mvp = proj * view * model;
+
+        so.SetUniformMat4f("u_MVP", mvp);
+
+        VertexArray va2;
+        VertexBuffer vb2 = VertexBuffer(m_vertexPositions, 4 * 4 * sizeof(float));
+        VertexBufferLayout layout2;
+        IndexBuffer ib2 = IndexBuffer(indices, 6);
+        Shader so2 = Shader("../OpenGLChess/res/shaders/Basic2.shader");
+        Texture texture2 = Texture("../OpenGLChess/res/textures/nice gear.jpg");
+
+        layout2.Push<float>(2);
+        layout2.Push<float>(2);
+        va2.AddBuffer(vb2, layout2);
+
+
+        texture2.Bind(1);
+        so2.Bind();
+        so2.SetUniform1i("u_Texture", 1);
+
+        glm::mat4 proj2 = glm::ortho(0.0f, (float)desktop.right, 0.0f, (float)desktop.bottom, -1.0f, 1.0f);
+        glm::mat4 view2 = glm::translate(glm::mat4(1.0f), glm::vec3(0, 0, 0));
+
+        glm::vec3 translation2 = glm::vec3(1200, 600, 0);
+        glm::mat4 model2 = glm::translate(glm::mat4(1.0f), translation);
+        glm::mat4 mvp2 = proj2 * view2 * model2;
+
+        so2.SetUniformMat4f("u_MVP", mvp2);
+        */
       //  test::TestScaleTexture scaleTest;
        // test::TextureTest texTest;
         
@@ -193,15 +255,19 @@ int main(void)
                 test.onRenderer();
                 test.OnImGuiRenderer();
                 
+               // renderer.Draw(va, ib, so);
+               // renderer.Draw(va2, ib2, so2);
                // ImGui::SliderFloat3("Translation", &translationA.x, 0.0f, 1280.0f);
                // texTest.OnImGuiRenderer(texture);
                
                
-                renderer.Draw(piece.returnVa(), piece.returnIb(), piece.returnSo());
-                tf.OnImGuiRenderer();
-                tf.OnUpdate(0.0f);
+               renderer.Draw(piece.returnVa(), piece.returnIb(), piece.returnSo());
+              // renderer.Draw(piece2.returnVa(), piece2.returnIb(), piece2.returnSo());
+               tf.OnImGuiRenderer();
+               tf.OnUpdate(0.0f);
                 ImGui::PopStyleVar();
                 
+                renderer.Draw(piece2.returnVa(), piece2.returnIb(), piece2.returnSo());
                // ImGui::ShowDemoWindow();
 
              // Begin a window with the ImGuiWindowFlags_AlwaysAutoResize flag
